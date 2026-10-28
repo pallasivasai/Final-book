@@ -1,0 +1,177 @@
+name: Build Final Combined Handbook
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'Final Book/**'
+      - '.github/workflows/build-final-book.yml'
+      - '!Final Book/Final-Combined-Handbook.pdf'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: final-combined-handbook
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download original book image assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          fetch_image() {
+            local url="$1" output="$2"
+            mkdir -p "$(dirname "$output")"
+            for attempt in 1; do
+              if curl --retry 0 --connect-timeout 4 --max-time 10 -fLsS "$url" -o "$output" && test -s "$output"; then
+                echo "Downloaded $output"
+                return 0
+              fi
+              sleep 2
+            done
+            echo "WARNING: Image unavailable: $url"
+            rm -f "$output"
+            return 0
+          }
+          # Real people photographs from Wikimedia Commons; the merged book places one in each curriculum section.
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Seamac%20Computer%20Based%20Training%20Room.jpg" "Domestic data entry operator-9th/book_illustrations/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20education%20girls%20Gujarat.jpg" "Domestic data entry operator-10th/book_illustrations/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Students%20at%20a%20school%20in%20Bangalore%2C%20India%20learning%20to%20code%20on%20Progate.jpg" "Web developer-11th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Training%20Teacher%20%26%20Students.jpg" "Web developer-12th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Students%20at%20a%20school%20in%20Bangalore%2C%20India%20learning%20to%20code%20on%20Progate.jpg" "Artificial intelligence assistant-9th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Training%20Teacher%20%26%20Students.jpg" "Artificial intelligence assistant-10th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Seamac%20Computer%20Based%20Training%20Room.jpg" "Junior software developer-11th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20education%20girls%20Gujarat.jpg" "Junior software developer-12th/images/people-photo.jpg" &
+          # Domestic Data Entry Operator IX committed illustrations are already present; generated Class X figures fall back safely when missing.
+          # Domestic Data Entry Operator X: real photographs from Wikimedia Commons.
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fire%20Drill.%20Workers%20leaving%20Building%205.%20%28d7f0d5ca616b4597ba62d1c48725a989%29.jpg" "Domestic data entry operator-10th/book_illustrations/emergency_preparedness.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/An%20emergency%20exit%20sign.jpg" "Domestic data entry operator-10th/book_illustrations/emergency_route.jpg" &
+          # Web Developer XI images
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Woman_sitting_in_her_workspace_and_typing_on_laptop.jpg" "Web developer-11th/images/web-developer-workspace.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Website%20Coding.jpg" "Web developer-11th/images/html-coding.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Responsive-web-design-devices.jpg" "Web developer-11th/images/responsive-devices.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Programming_code.jpg" "Web developer-11th/images/programming-code.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/ComputerProgrammer.jpg" "Web developer-11th/images/programmer-work.jpg" &
+          # Web Developer XII
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20room.jpg" "Web developer-12th/images/computer-room.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Programming.jpg" "Web developer-12th/images/sql-programming.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Programming_code.jpg" "Web developer-12th/images/php-code.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20server%20rack.jpg" "Web developer-12th/images/server-rack.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20workstation%20while%20out%20of%20use.jpg" "Web developer-12th/images/workstation.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ergonomic%20Workstation.png" "Web developer-12th/images/ergonomic-workstation.png" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Recycling%20Bins.jpg" "Web developer-12th/images/recycling-bins.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/A%20wheelchair%20beside%20a%20desk.jpg" "Web developer-12th/images/wheelchair-access.jpg" &
+          # Junior Software Developer XI
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20Motherboard%20Closeup.jpg" "Junior software developer-11th/images/motherboard.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Python%20code%20example.png" "Junior software developer-11th/images/programming-code.png" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ubuntu%2025.04%20default%20desktop%20-%20English.png" "Junior software developer-11th/images/ubuntu-desktop.png" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20abstraction%20layers%20separated%20OS.svg" "Junior software developer-11th/images/os-abstraction-source.svg" &
+                    fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/ProcessStates.png" "Junior software developer-11th/images/process-states.png" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Diagram%20of%20a%20security%20descriptor%20for%20a%20file%20on%20Windows.png" "Junior software developer-11th/images/file-permissions.png" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Screen-python-code-matplotlib-physics-simulation.jpg" "Junior software developer-11th/images/python-simulation.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Router%20on%20a%20stick.png" "Junior software developer-11th/images/router-vlan.png" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/LAN-physicalTopology.png" "Junior software developer-11th/images/lan-topology.png" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/QUEUE%20VS%20STACK.png" "Junior software developer-11th/images/stack-queue.png" &
+          # Junior Software Developer XII; reuse if fetched successfully above.
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/System%20Development%20Life-cycle%20diagram.png" "Junior software developer-12th/images/software-sdlc.png" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Entity%20Relationship%20Diagram.jpg" "Junior software developer-12th/images/database-er.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mysql%20database%20design.png" "Junior software developer-12th/images/mysql-design.png" &
+          wait
+          for f in programming-code.png stack-queue.png python-simulation.jpg router-vlan.png lan-topology.png; do
+            test ! -s "Junior software developer-11th/images/$f" || cp "Junior software developer-11th/images/$f" "Junior software developer-12th/images/$f"
+          done
+      - name: Prepare space-free image asset paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "Final Book/assets"
+          folders=(
+            "Domestic data entry operator-9th"
+            "Domestic data entry operator-10th"
+            "Web developer-11th"
+            "Web developer-12th"
+            "Artificial intelligence assistant-9th"
+            "Artificial intelligence assistant-10th"
+            "Junior software developer-11th"
+            "Junior software developer-12th"
+          )
+          i=1
+          for folder in "${folders[@]}"; do
+            mkdir -p "Final Book/assets/book${i}"
+            for subdir in images book_illustrations; do
+              if [ -d "${folder}/${subdir}" ]; then
+                cp -a "${folder}/${subdir}" "Final Book/assets/book${i}/"
+              fi
+            done
+            i=$((i+1))
+          done
+      - name: Generate merged LaTeX source
+        run: python "Final Book/merge_books.py"
+      - name: Ensure all source-code listing styles are defined
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Append fallback listing style definitions before compiling, after generated source.
+          cat >> 'Final Book/main.tex' <<'EOF'
+          % Defensive styles for source-code snippets inherited from earlier books.
+          \lstdefinestyle{pythonstyle}{language=Python,basicstyle=\ttfamily\small,keywordstyle=\color{Navy}\bfseries,commentstyle=\color{Teal},stringstyle=\color{Violet},numbers=left,numberstyle=\tiny\color{Ink!65},stepnumber=1,numbersep=8pt,showstringspaces=false,breaklines=true,frame=single,rulecolor=\color{Teal!55},backgroundcolor=\color{SoftGray},xleftmargin=2mm,framexleftmargin=2mm,aboveskip=5pt,belowskip=5pt}
+          \lstdefinestyle{webcode}{basicstyle=\ttfamily\small,keywordstyle=\color{Navy}\bfseries,commentstyle=\color{Teal},stringstyle=\color{Violet},numbers=left,numberstyle=\tiny\color{Ink!65},stepnumber=1,numbersep=8pt,showstringspaces=false,breaklines=true,frame=single,rulecolor=\color{Teal!55},backgroundcolor=\color{SoftGray},xleftmargin=2mm,framexleftmargin=2mm,aboveskip=5pt,belowskip=5pt}
+          \lstdefinestyle{sqlcode}{basicstyle=\ttfamily\small,breaklines=true,showstringspaces=false,columns=fullflexible,frame=single}
+          \lstdefinestyle{htmlcode}{language=HTML,basicstyle=\ttfamily\small,breaklines=true,showstringspaces=false,frame=single}
+          \lstdefinestyle{csscode}{language=CSS,basicstyle=\ttfamily\small,breaklines=true,showstringspaces=false,frame=single}
+          \lstdefinestyle{javascriptstyle}{language=JavaScript,basicstyle=\ttfamily\small,breaklines=true,showstringspaces=false,frame=single}
+          \lstdefinestyle{bashstyle}{language=bash,basicstyle=\ttfamily\small,breaklines=true,showstringspaces=false,frame=single}
+          % Shared callout environments referenced by imported source chapters.
+          \newtcolorbox{keybox}{colback=Pale,colframe=Teal,boxrule=.6pt,arc=1mm,left=2mm,right=2mm,top=1mm,bottom=1mm}
+          \newtcolorbox{warningbox}{colback=Rose,colframe=Coral,boxrule=.6pt,arc=1mm,left=2mm,right=2mm,top=1mm,bottom=1mm}
+          \newtcolorbox{examplebox}{colback=SoftGray,colframe=Navy,boxrule=.6pt,arc=1mm,left=2mm,right=2mm,top=1mm,bottom=1mm}
+          EOF
+      - name: Compile combined handbook
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: 'Final Book'
+          latexmk_use_xelatex: true
+      - name: Publish final PDF in Final Book folder on main
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp "Final Book/main.pdf" "Final Book/Final-Combined-Handbook.pdf"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "Final Book/Final-Combined-Handbook.pdf"
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish final combined handbook PDF"
+            git push origin HEAD:main
+          else
+            echo "The published PDF is already up to date."
+          fi
+      - name: Create downloadable ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "Final Book/download"
+          cp "Final Book/main.pdf" "Final Book/download/Final-Combined-Handbook.pdf"
+          cp "Final Book/main.tex" "Final Book/download/main.tex"
+          cd "Final Book/download"
+          zip -9 "../Final-Combined-Handbook.zip" "Final-Combined-Handbook.pdf" "main.tex"
+      - name: Upload final PDF, source and ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Final-Combined-Handbook-ZIP
+          path: |
+            Final Book/main.pdf
+            Final Book/main.tex
+            Final Book/Final-Combined-Handbook.zip
+          if-no-files-found: error
+          retention-days: 30
