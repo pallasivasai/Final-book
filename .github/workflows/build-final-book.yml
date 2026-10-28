@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: final-combined-handbook
+  group: final-book-topic-images
   cancel-in-progress: true
 
 jobs:
