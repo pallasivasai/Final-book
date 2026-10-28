@@ -51,6 +51,15 @@ jobs:
           fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Training%20Teacher%20%26%20Students.jpg" "Artificial intelligence assistant-10th/images/people-photo.jpg" &
           fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Seamac%20Computer%20Based%20Training%20Room.jpg" "Junior software developer-11th/images/people-photo.jpg" &
           fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20education%20girls%20Gujarat.jpg" "Junior software developer-12th/images/people-photo.jpg" &
+          # Real photographs of people learning computing, sourced from Wikimedia Commons.
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Seamac%20Computer%20Based%20Training%20Room.jpg" "Domestic data entry operator-9th/book_illustrations/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20education%20girls%20Gujarat.jpg" "Domestic data entry operator-10th/book_illustrations/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Students%20at%20a%20school%20in%20Bangalore%2C%20India%20learning%20to%20code%20on%20Progate.jpg" "Web developer-11th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Training%20Teacher%20%26%20Students.jpg" "Web developer-12th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Students%20at%20a%20school%20in%20Bangalore%2C%20India%20learning%20to%20code%20on%20Progate.jpg" "Artificial intelligence assistant-9th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Training%20Teacher%20%26%20Students.jpg" "Artificial intelligence assistant-10th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Seamac%20Computer%20Based%20Training%20Room.jpg" "Junior software developer-11th/images/people-photo.jpg" &
+          fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer%20education%20girls%20Gujarat.jpg" "Junior software developer-12th/images/people-photo.jpg" &
           # Domestic Data Entry Operator IX committed illustrations are already present; generated Class X figures fall back safely when missing.
           # Domestic Data Entry Operator X: real photographs from Wikimedia Commons.
           fetch_image "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fire%20Drill.%20Workers%20leaving%20Building%205.%20%28d7f0d5ca616b4597ba62d1c48725a989%29.jpg" "Domestic data entry operator-10th/book_illustrations/emergency_preparedness.jpg" &
