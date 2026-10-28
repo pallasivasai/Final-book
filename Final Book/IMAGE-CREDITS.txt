@@ -1,0 +1,78 @@
+WIKIMEDIA COMMONS IMAGE CREDITS
+===============================
+
+Images are downloaded during the GitHub Actions build from the file pages below.
+Captions in the handbook point here so that image attribution is available without
+crowding the page layout. Please check the live Commons page for the current
+author and licence if redistributing an individual image.
+
+1. training-room.jpg
+   File: Seamac Computer Based Training Room.jpg
+   Source: https://commons.wikimedia.org/wiki/File:Seamac_Computer_Based_Training_Room.jpg
+
+2. spreadsheet.png
+   File: Libreoffice-calc.png
+   Source: https://commons.wikimedia.org/wiki/File:Libreoffice-calc.png
+   License: CC0 1.0 (as stated on Commons).
+
+3. data-visualization.png
+   File: Data visualization.png
+   Source: https://commons.wikimedia.org/wiki/File:Data_visualization.png
+   License: CC BY 4.0 (as stated on Commons).
+
+4. database-architecture.png
+   File: Architecture of database system.png
+   Source: https://commons.wikimedia.org/wiki/File:Architecture_of_database_system.png
+   License: CC BY-SA 4.0 (as stated on Commons).
+
+5. network-topologies.png
+   File: NetworkTopologies.png
+   Source: https://commons.wikimedia.org/wiki/File:NetworkTopologies.png
+   Source file describes computer network topologies; see Commons for reuse details.
+
+6. security-lock.jpg
+   File: Basic secure locking system.jpg
+   Source: https://commons.wikimedia.org/wiki/File:Basic_secure_locking_system.jpg
+   See Commons for author and licence details.
+
+7. ai-workflow.png
+   File: Workflow of a machine-learning-based AI system.png
+   Source: https://commons.wikimedia.org/wiki/File:Workflow_of_a_machine-learning-based_AI_system.png
+   See Commons for author and licence details.
+
+8. python-code.png
+   File: Python code example.png
+   Source: https://commons.wikimedia.org/wiki/File:Python_code_example.png
+   License: CC0 1.0 (as stated on Commons).
+
+9. sdlc.png
+   File: Software Development Lifecycle Diagram.png
+   Source: https://commons.wikimedia.org/wiki/File:Software_Development_Lifecycle_Diagram.png
+   License: CC BY-SA 4.0 (as stated on Commons).
+
+10. office-suite.png
+    File: LibreOffice Writer, Calc, Impress and Draw.png
+    Source: https://commons.wikimedia.org/wiki/File:LibreOffice_Writer,_Calc,_Impress_and_Draw.png
+    See Commons for the applicable free-software licence.
+
+11. web-development.jpg
+    File: Students at a school in Bangalore, India learning to code on Progate.jpg
+    Source: https://commons.wikimedia.org/wiki/File:Students_at_a_school_in_Bangalore,_India_learning_to_code_on_Progate.jpg
+    See Commons for author and licence details.
+
+12. recycling.jpg
+    File: Recycling Bins.jpg
+    Source: https://commons.wikimedia.org/wiki/File:Recycling_Bins.jpg
+    See Commons for author and licence details.
+
+13. accessibility.jpg
+    File: A wheelchair beside a desk.jpg
+    Source: https://commons.wikimedia.org/wiki/File:A_wheelchair_beside_a_desk.jpg
+    See Commons for author and licence details.
+
+Concept matching
+----------------
+The build script selects an illustration by the chapter title (for example, AI
+chapters use a machine-learning workflow, database chapters use a database
+architecture diagram, and network chapters use a topology diagram). A chapter
+that already contains a diagram or photograph keeps its existing illustration.
