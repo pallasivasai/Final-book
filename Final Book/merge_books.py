@@ -95,11 +95,55 @@ def extract_body(path: Path) -> str:
     # The book parts are stitched together without creating separate books or cover pages.
     return text.strip()
 
+def inject_chapter_images(body: str) -> str:
+    """Give every chapter at least one relevant illustration, using downloaded Commons assets."""
+    concept_rules = [
+        (r"artificial intelligence|machine learning|neural network|ai project|data pre-processing|data preprocessing", "ai-workflow.png", "Machine-learning workflow"),
+        (r"database|\bsql\b|mysql|queries|relational", "database-architecture.png", "Database system architecture"),
+        (r"network|transmission media|protocol|internet|computer system architecture|operating system", "network-topologies.png", "Computer network topology"),
+        (r"cyber|security|privacy|professional conduct|safe data|digital safety", "security-lock.jpg", "Computer security"),
+        (r"spreadsheet|data quality|data visualisation|data visualization|statistics|mathematics|numpy|pandas|analyse data|data analysis|goal seek", "spreadsheet.png", "Spreadsheet and data analysis"),
+        (r"visualisation|visualization|matplotlib|chart|graph", "data-visualization.png", "Data visualisation"),
+        (r"keyboard|keyboarding|workstation|health and safety|accidents|emergencies|ergonomic", "training-room.jpg", "Computer training and safe workstation practice"),
+        (r"html|css|web design|web developer|responsive|php|browser|http|javascript|dom|website|server-side", "web-development.jpg", "Web development"),
+        (r"programming|python|coding|algorithm|problem-solving|data structures|functions|strings|lists|tuples|exception handling|file handling", "python-code.png", "Programming code"),
+        (r"software development life cycle|software engineering|testing|maintenance|requirements|project documents|quality assurance", "sdlc.png", "Software development lifecycle"),
+        (r"document|writer|styles|images|presentation|impress|report|forms|assessment|lesson planning|microteaching|feedback|learning records", "office-suite.png", "Digital documents and productivity tools"),
+        (r"waste management|recycling|resource conservation", "recycling.jpg", "Recycling and resource conservation"),
+        (r"disability|accessibility|inclusive|equality|diversity", "accessibility.jpg", "Accessible and inclusive workplaces"),
+    ]
+    parts = re.split(r"(?m)(\\chapter\*?\s*\{[^{}]*\})", body)
+    if len(parts) < 3:
+        return body
+    result = [parts[0]]
+    for i in range(1, len(parts), 2):
+        heading = parts[i]
+        section_body = parts[i + 1] if i + 1 < len(parts) else ""
+        # Existing real photos/diagrams already satisfy this chapter's illustration requirement.
+        if r"\\includegraphics" not in section_body and r"\\photo{" not in section_body:
+            title_match = re.search(r"\\chapter\*?\s*\{([^{}]*)\}", heading)
+            title = title_match.group(1) if title_match else ""
+            asset, caption = "training-room.jpg", "Computer-based learning and practical work"
+            for pattern, candidate, candidate_caption in concept_rules:
+                if re.search(pattern, title, flags=re.I):
+                    asset, caption = candidate, candidate_caption
+                    break
+            credit = r"\footnotesize\textit{Source: Wikimedia Commons; attribution and licence details are listed in IMAGE-CREDITS.txt.}"
+            block = (
+                "\n\\begin{center}\\IfFileExists{assets/concepts/" + asset + "}{"
+                "\\includegraphics[width=.72\\textwidth,height=31mm,keepaspectratio]{assets/concepts/" + asset + "}"
+                "\\par{\\small\\textit{" + caption + "}}\\par{" + credit + "}"
+                "}{}\\end{center}\n"
+            )
+            section_body = block + section_body
+        result.extend([heading, section_body])
+    return "".join(result)
+
 def render_main_tex(tex_path: Path) -> str:
     bodies = []
     for index, book in enumerate(BOOKS, start=1):
         path = source_tex(book)
-        body = extract_body(path)
+        body = inject_chapter_images(extract_body(path))
         # Add a real, topic-relevant classroom photograph at the start of each curriculum.
         # Photos are fetched from Wikimedia Commons by the workflow and credited below.
         people_photos = {
