@@ -76,3 +76,36 @@ The build script selects an illustration by the chapter title (for example, AI
 chapters use a machine-learning workflow, database chapters use a database
 architecture diagram, and network chapters use a topology diagram). A chapter
 that already contains a diagram or photograph keeps its existing illustration.
+
+
+14. students-computer.jpg
+    File: Students using a computer.jpg
+    Photographer: Kwameghana (Bright Kwame Ayisi)
+    Source: https://commons.wikimedia.org/wiki/File:Students_using_a_computer.jpg
+    License: CC0 1.0 Universal Public Domain Dedication.
+
+15. teacher-students.jpg
+    File: Training Teacher & Students.jpg
+    Photographer: Dr. Balkrishna Hari Mali
+    Source: https://commons.wikimedia.org/wiki/File:Training_Teacher_%26_Students.jpg
+    License: CC BY-SA 4.0. Attribution is required; adaptations must use the same or compatible licence.
+
+16. classroom-india.jpg
+    File: Computer class Gujarat.jpg
+    Source: https://commons.wikimedia.org/wiki/File:Computer_class_Gujarat.jpg
+    License: Check the current Commons file page for its licence and attribution details.
+
+17. students-coding.jpg
+    File: Students at a school in Bangalore, India learning to code on Progate.jpg
+    Photographer: Nayakyashraj
+    Source: https://commons.wikimedia.org/wiki/File:Students_at_a_school_in_Bangalore,_India_learning_to_code_on_Progate.jpg
+    License: CC BY-SA 4.0. Attribution is required; adaptations must use the same or compatible licence.
+
+Human-photo policy
+------------------
+The merged-book generator adds genuine photographs of people to people-centred
+chapters (for example, data entry, training, employability and computer learning)
+when the chapter does not already contain a recognizable human photograph.
+Technical chapters keep concept-matched diagrams/screenshots and receive a human
+photograph only where the chapter topic makes it useful. Images are fetched from
+Wikimedia Commons during the build; no synthetic/AI-generated pictures are used.
