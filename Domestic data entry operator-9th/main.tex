@@ -1,0 +1,402 @@
+\documentclass[11pt,openany,oneside]{book}
+\usepackage[a4paper,top=25mm,bottom=23mm,left=25mm,right=22mm,headheight=16pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\usepackage{amssymb,xcolor,graphicx,array,booktabs,longtable,tabularx,colortbl,enumitem,tikz,tcolorbox,fancyhdr,titlesec,tocloft,hyperref,eso-pic,microtype}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+\definecolor{Navy}{HTML}{17365D}
+\definecolor{Teal}{HTML}{007F86}
+\definecolor{Pale}{HTML}{EAF6F7}
+\definecolor{Gold}{HTML}{E3A72F}
+\definecolor{Ink}{HTML}{293746}
+\definecolor{LightGold}{HTML}{FFF5DD}
+\definecolor{SoftGray}{HTML}{F4F6F9}
+\definecolor{Coral}{HTML}{D95D50}
+\definecolor{Violet}{HTML}{7656A6}
+\definecolor{Sky}{HTML}{DCEEFF}
+\definecolor{Rose}{HTML}{FCEBE8}
+\hypersetup{colorlinks=true,linkcolor=Teal,urlcolor=Teal,pdftitle={Handbook: Domestic Data Entry Operator},pdfauthor={Master Trainer Handbook}}
+\setlist[itemize]{leftmargin=1.5em,itemsep=1.5pt,topsep=2pt,parsep=0pt}\setlist[enumerate]{leftmargin=1.7em,itemsep=2pt,topsep=2pt,parsep=0pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}\setlength{\emergencystretch}{3em}
+\AddToShipoutPictureBG{\begin{tikzpicture}[remember picture,overlay]
+\draw[Navy!65,line width=.55pt] ([xshift=11mm,yshift=-11mm]current page.north west) rectangle ([xshift=-11mm,yshift=11mm]current page.south east);
+\draw[Teal,line width=1.6pt] ([xshift=11mm,yshift=-11mm]current page.north west)--([xshift=37mm,yshift=-11mm]current page.north west);
+\draw[Coral,line width=1.6pt] ([xshift=-11mm,yshift=11mm]current page.south east)--([xshift=-37mm,yshift=11mm]current page.south east);
+\fill[Gold] ([xshift=11mm,yshift=-11mm]current page.north west) circle (1.1mm);
+\fill[Violet] ([xshift=-11mm,yshift=11mm]current page.south east) circle (1.1mm);
+\end{tikzpicture}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\bfseries\sffamily\color{Teal} DOMESTIC DATA ENTRY OPERATOR}
+\fancyhead[R]{\small\sffamily\color{Navy} MASTER TRAINER HANDBOOK}
+\fancyfoot[C]{\tikz[baseline=(n.base)]\node[fill=Teal,draw=Gold,line width=.7pt,text=white,circle,minimum size=7mm,inner sep=1pt,font=\small\bfseries] (n) {\thepage};}
+\renewcommand{\headrulewidth}{.5pt}\renewcommand{\headrule}{\hbox to\headwidth{\color{Gold}\leaders\hrule height \headrulewidth\hfill}}
+\setlength{\headheight}{16pt}
+\titleformat{\chapter}[display]{\normalfont\sffamily\bfseries\color{Navy}}{\filleft\Large\color{Coral}\chaptername\ \thechapter}{.6ex}{\color{Teal}\LARGE\raggedright}[\vspace{.5ex}\color{Gold}\rule{\textwidth}{.8pt}]
+\titlespacing*{\chapter}{0pt}{-8mm}{.5ex}
+\titlespacing*{\section}{0pt}{1.4ex plus .2ex minus .2ex}{.4ex}
+\titlespacing*{\subsection}{0pt}{1ex plus .2ex minus .2ex}{.3ex}
+\titleformat{\section}{\Large\sffamily\bfseries\color{Teal}}{\color{Coral}\thesection}{.7em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries\color{Violet}}{\thesubsection}{.7em}{}
+\newcommand{\checklistitem}{\noindent$\square$\quad}
+\begin{document}
+\begin{titlepage}\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\fill[Navy] (current page.north west) rectangle ([yshift=-10cm]current page.north east);
+\fill[Teal] ([yshift=-10cm]current page.north west) rectangle ([yshift=-10.28cm]current page.north east);
+\fill[Coral] ([yshift=-10.28cm]current page.north west) rectangle ([yshift=-10.42cm]current page.north east);
+\draw[Gold,line width=2pt] ([xshift=22mm,yshift=-20mm]current page.north west)--([xshift=-22mm,yshift=-20mm]current page.north east);
+\draw[Gold,line width=1pt] ([xshift=22mm,yshift=-90mm]current page.north west)--([xshift=-22mm,yshift=-90mm]current page.north east);
+\end{tikzpicture}
+\vspace*{19mm}
+{\color{white}\rmfamily\bfseries\fontsize{38}{44}\selectfont HANDBOOK\par}
+\vspace{5mm}
+{\color{Gold}\rule{.72\textwidth}{1.2pt}\par}
+\vspace{7mm}
+{\color{white}\sffamily\Large Domestic Data Entry Operator\par}
+\vspace{3mm}
+{\color{white}\sffamily\large Class IX Vocational Education\par}
+\vfill
+\begin{center}
+{\sffamily\Large\bfseries\color{Teal} Information Technology and IT-Enabled Services\par}
+\vspace{5mm}
+{\large A textbook-style learning resource for Domestic Data Entry Operator\par}
+\end{center}
+\vfill
+\begin{center}
+{\small Data Entry \textbullet\ Digital Documents \textbullet\ Spreadsheets \textbullet\ Presentations \textbullet\ Digital Safety\par}
+\end{center}
+\end{titlepage}
+\frontmatter
+\tableofcontents
+\mainmatter
+
+\chapter{Unit 1 -- IT--ITeS and the Data Entry Workplace}
+\section{From facts to useful information}
+Data consists of recorded facts such as a name, date, quantity, identification number or attendance mark. Information is data arranged and interpreted so that it can answer a question. A list of daily attendance marks becomes more useful when it is organised by class and date and checked for missing entries. The computer stores and processes the entries, but a person still has to decide whether the information is complete and appropriate for its purpose.
+\begin{center}\includegraphics[width=.82\textwidth]{book_illustrations/it_ites_workflow.png}\end{center}
+\section{What a data-entry operator may do}
+The work can include reading information from a form, entering it into a digital system, checking required fields, correcting errors against the source, updating an existing record, retrieving a record when authorised, and preparing a simple work report. The exact task depends on the organisation. In a school, a practice example might be an inventory list; in a clinic, records would be sensitive and require strict access controls. For classroom work, use fictional names and numbers.
+\section{Five dimensions of record quality}
+\begin{enumerate}
+\item \textbf{Accuracy:} the entry matches the trusted source.
+\item \textbf{Completeness:} required fields are present, or missing information is clearly flagged.
+\item \textbf{Consistency:} the same kind of value is recorded in the same format.
+\item \textbf{Timeliness:} the record is entered and updated when required.
+\item \textbf{Traceability:} a reviewer can understand where the value came from and what was checked, without exposing information to unauthorised people.
+\end{enumerate}
+These qualities can conflict with pressure to work quickly. A fast entry is not good work if a digit is wrong or a required field is guessed. Teach learners to maintain a steady pace and build checks into the workflow.
+\section{A practical example: registration records}
+Give pairs a fictional registration sheet containing eight records. Include a few deliberate issues: one missing phone number, a date written in a different format, one transposed digit in an ID, and one record with extra spaces. Ask learners to enter the records into a table and mark the issues they can identify. They must not invent a value to fill a blank. The correct response to missing source information is to flag it for clarification according to the agreed process.
+\section{The source of truth}
+When two values disagree, learners should not choose whichever looks more plausible. They should return to the designated source or ask the authorised supervisor. This habit matters because a plausible guess can become a false record that is copied into later reports. Demonstrate a clear correction note or flag where the local process allows it.
+
+\section{Lesson plan outline}
+Begin with examples of records learners recognise, such as a library book list or school equipment register. Ask what could go wrong if the data were inaccurate. Demonstrate one record from source to checked entry. Let pairs complete a short set and then compare against the source. End by asking each learner to name one check they will perform before submitting work.
+
+\chapter{Unit 2 -- Keyboarding, Accuracy and Workstation Practice}
+\section{A comfortable workstation}
+\begin{center}\includegraphics[width=.72\textwidth]{book_illustrations/workstation_posture.png}\end{center}
+Invite learners to adjust their chairs and screens so they can work without straining. Feet should be supported where possible, shoulders relaxed and wrists in a comfortable neutral position. The screen should be readable without leaning forward for long periods. There is no single posture that fits every body; the practical aim is to reduce unnecessary strain and allow regular changes of position.
+\section{Keyboard groups and familiarisation}
+\begin{center}\includegraphics[width=.82\textwidth]{book_illustrations/keyboard_groups.png}\end{center}
+Explain the letter keys, number row, numeric keypad where available, function keys, navigation keys and modifier keys such as Shift, Ctrl and Alt. The layout varies between keyboards, so learners should identify the controls on the equipment they actually use. Ask them to locate Backspace, Enter, Shift, Spacebar and the arrow keys before beginning a timed activity.
+\section{Build a practice sequence}
+A beginner benefits from short, focused practice. Start with familiar letter patterns, then common words, sentences, punctuation and numeric strings. Keep the source text visible and teach learners to compare the typed result with it. When a learner makes repeated errors, shorten the passage and return to the keys or combinations causing difficulty. Do not increase the time pressure just because the class is progressing at different speeds.
+\subsection{Accuracy before speed}
+Speed is meaningful only when measured alongside accuracy and under comparable conditions. If two attempts use different text lengths or difficulty, their results cannot be compared fairly. Use the same duration, similar text and the same method for each attempt. Give feedback on one or two observable behaviours: for example, “You checked each line before moving on,” or “Your number entries were accurate when you paused to compare the source.”
+\subsection{Simple recording sheet}
+\begin{center}\small\begin{tabularx}{\textwidth}{|X|c|c|X|}\hline
+\textbf{Attempt} & \textbf{Duration} & \textbf{Errors found} & \textbf{Next practice goal}\\\hline
+1 & 2 min & & \\\hline
+2 & 2 min & & \\\hline
+3 & 2 min & & \\\hline
+\end{tabularx}\end{center}
+\section{Common difficulties and coaching responses}
+If a learner looks down at every key, reduce the task to a small set of keys and practise slowly. If the learner types quickly but misses characters, ask them to pause at the end of each line and compare. If they press the wrong modifier key, demonstrate the combination slowly and let them repeat it several times. If discomfort appears, stop and adjust the setup rather than asking the learner to push through it.
+
+\section{Feedback that motivates}
+Use evidence instead of labels. “You made six errors” is information, but it is not a plan. A more useful comment is: “Four errors were in the number sequence. For the next attempt, read each group of three digits, enter it, and compare it before continuing.” Make the next step small enough to be achievable.
+
+\chapter{Unit 3 -- Digital Documentation}
+\section{A document is more than typed words}
+A useful document has a clear purpose, readable structure and a reliable saved copy. Learners should be able to create a new file, enter text, correct mistakes, format headings, save in the correct folder, close the document and reopen it. The precise menu names differ across word processors, but the sequence remains useful across applications.
+\begin{center}\includegraphics[width=.8\textwidth]{book_illustrations/document_workflow.png}\end{center}
+\section{Demonstration: prepare a school notice}
+Use a fictional school event. Include a heading, date, venue, a short explanation, instructions and a contact role rather than a real phone number. First discuss what the reader needs to know. Type the content, check spelling and punctuation, make the heading distinct, keep body text readable and use spacing consistently. Avoid using multiple spaces to force text into position; use the application's alignment and paragraph controls.
+\section{Naming and saving files}
+A filename should help another person identify the document without opening several files. A practical pattern is \texttt{Class9\_EventNotice\_Draft1}. Use a name that suits the school's agreed convention and avoid vague names such as \texttt{newfile} or \texttt{finalfinal}. Save in the required folder. Then close and reopen the file; this confirms that the document was saved where expected.
+\section{Formatting for readers}
+Use headings to show structure, not just to decorate. Keep font choices limited, use a consistent hierarchy, and leave enough white space for the eye to follow the page. Check that the document remains readable when viewed at ordinary screen size or printed. Colour should support meaning and should not be the only way information is distinguished.
+\section{Troubleshooting without panic}
+If a file seems to have disappeared, first check the current folder, recent files list and filename. Avoid creating several copies immediately, because this can make the situation more confusing. If formatting changes unexpectedly, undo the last action if appropriate and inspect paragraph or style settings. If the program closes unexpectedly, follow the application's recovery process and then save a clearly named copy.
+
+\section{What the trainer should observe}
+Look for a sensible sequence, not just a polished page. Can the learner explain why they chose the filename? Did they check the source text? Did they save in the correct location? Can they retrieve the file without assistance? These observations show whether the skill is likely to transfer to a new task.
+
+\chapter{Unit 4 -- Spreadsheets and Data Quality}
+\section{Understanding a worksheet}
+\begin{center}\includegraphics[width=.82\textwidth]{book_illustrations/spreadsheet_cells.png}\end{center}
+A worksheet organises information in rows and columns. A cell is identified by its column letter and row number, such as B3. A range is a group of cells. Before entering data, learners should identify the purpose of each column and use clear headings. One row usually represents one record; each column should hold one type of information. This makes the table easier to check, sort and summarise.
+\section{Enter data consistently}
+Use fictional inventory data for a school computer lab. Suggested columns are Asset ID, Item, Quantity, Condition and Last Checked. Show how to enter one row, then ask learners to complete the rest. Dates should use a consistent format. Quantity should be entered as a number, not as a mixture of words and digits. Required values should be checked against the source, not guessed.
+\section{Basic calculations and verification}
+Where the prescribed learning outcomes include formulas, demonstrate a simple total using a small number of values. Explain the range included in the formula and verify the result independently. A formula can produce a plausible answer even when it points to the wrong cells. Test the formula with a small example or recalculate the total manually before trusting it.
+\section{Find common data-quality issues}
+Typical issues include duplicate identifiers, blank required fields, inconsistent spelling, mixed date formats, numbers stored as text and values that do not fit the expected range. Give learners a worksheet with deliberate errors. Ask them to locate each issue, explain why it matters and identify the correct source for resolution. Do not reward learners for silently filling in missing values from guesswork.
+\begin{center}\includegraphics[width=.78\textwidth]{book_illustrations/data_quality_cycle.png}\end{center}
+\section{Sorting, filtering and protecting the record}
+If sorting or filtering is part of the prescribed software practice, show the class how to select the full table before sorting. Sorting only one column can detach values from their records. Use a copy of the practice file before experimenting. Ask learners to check that each ID remains with its original item after the sort. Save a new version when the activity calls for a substantial change.
+\section{A realistic classroom case}
+A lab assistant gives the class an inventory sheet with ten assets. Two assets have the same ID, one quantity is blank, and three dates use different formats. Learners should first compare the worksheet with the original sheet, mark the issues and write a question for the supervisor about the missing quantity. They then correct only the errors supported by the source. The class finishes by explaining why the duplicate ID is more serious than a minor spacing inconsistency.
+
+\chapter{Unit 5 -- Digital Presentations}
+\section{Plan before opening the software}
+A presentation should help an audience understand a message. Before creating slides, ask: who will listen, what should they understand, and what should they do with the information? A short classroom presentation usually needs a beginning, a small number of supporting points and a clear ending. Adding slides is not the same as adding useful information.
+\begin{center}\includegraphics[width=.82\textwidth]{book_illustrations/presentation_sequence.png}\end{center}
+\section{Build a readable slide}
+Use a clear title, short phrases and a visual that supports the message. Keep alignment and typography consistent. If the text is too small to read from the back of the room, reduce the content or split it across slides. Avoid unnecessary transitions and decorative effects that compete with the information. A simple slide that the audience can follow is usually more effective than a crowded one.
+\section{Use images responsibly}
+Choose visuals that are relevant and suitable for the audience. Credit or follow the reuse conditions of external images when required. Do not include a photograph of a student, customer or colleague without the appropriate permission. For practice, use original shapes, approved school assets or clearly reusable images.
+\section{Review from the audience's seat}
+Run the slideshow and check it in presentation mode. Ask a peer to sit at a distance and report which words are difficult to read. The presenter should practise explaining the slide rather than reading every word. Feedback should be concrete: “The diagram explains the sequence well, but the last line is too small,” is more useful than “Make it better.”
+
+\chapter{Unit 6 -- Lesson Planning and VT Microteaching}
+\section{Start with the learner's outcome}
+A lesson outcome should describe what the learner can demonstrate by the end. “Understand spreadsheets” is too broad to observe. “Enter six fictional inventory records, identify a duplicate ID and explain how it should be resolved” gives the trainer and learner a shared target. Choose an outcome that fits the available time and equipment.
+\section{Plan the lesson sequence}
+A practical session can follow this structure: connect to a familiar situation, state the outcome, demonstrate the task, guide the first attempt, provide independent practice, check the work and close with reflection. Do not spend the entire period explaining. Learners need enough time to handle the keyboard, make decisions and recover from ordinary mistakes.
+\begin{center}\includegraphics[width=.78\textwidth]{book_illustrations/teaching_cycle.png}\end{center}
+\section{Microteaching in small steps}
+Ask each VT to teach a short section to peers acting as learners. The task should be narrow enough to demonstrate in five to eight minutes. The observer records whether the outcome was clear, the steps were visible, the explanation used accessible language, learners were invited to practise, and the final check matched the outcome. The purpose is rehearsal, not performance theatre.
+\section{Giving peer feedback}
+Use a simple structure: one thing that helped learning, one point that could be clearer, and one practical suggestion. Base comments on observed behaviour. “You showed how to save and then reopened the file to verify it” identifies a useful practice. “You are a natural teacher” may be kind, but it does not tell the VT what to repeat next time.
+\section{Adapting when the plan changes}
+If computers are unavailable, use printed screenshots or a step-card sequence to discuss decisions, then schedule hands-on practice as soon as possible. If the class needs more time, preserve the core outcome and shorten optional extension work. If the activity is too easy, add a realistic checking challenge rather than merely increasing the amount of typing.
+
+\chapter{Unit 7 -- Assessment, Feedback and Learning Records}
+\section{Match assessment to the skill}
+If the outcome is to create and save a document, a written quiz alone is not enough. Ask the learner to perform the task and show the saved file. If the outcome is to identify data-quality problems, provide a small table and ask the learner to mark the issues and explain the next step. Evidence should reflect the actual skill being taught.
+\section{Use a short, visible rubric}
+A rubric should describe observable performance. Avoid vague criteria such as “good work” or “excellent understanding.” For a document task, criteria might include: required content present, readable formatting, meaningful filename, correct save location and successful retrieval. Explain the criteria before practice so learners know what quality looks like.
+\begin{center}\small\begin{tabularx}{\textwidth}{|p{.27\textwidth}|X|X|}\hline
+\textbf{Criterion} & \textbf{Independent} & \textbf{Needs another practice}\\\hline
+Task sequence & Completes steps in a sensible order & Misses or repeats important steps\\\hline
+Accuracy & Checks output against the source & Several unchecked mismatches remain\\\hline
+File handling & Saves and retrieves the correct file & Cannot locate the saved result\\\hline
+Explanation & Can explain at least one quality check & Cannot yet explain how correctness was checked\\\hline
+\end{tabularx}\end{center}
+\section{Feedback while the task is fresh}
+Feedback works best when it is prompt, specific and possible to act on. Name the observed behaviour, explain its effect and agree on the next step. For example: “You checked the first five rows, but the final two were not compared with the source. Before submitting the next sheet, scan every row and mark the ones you have verified.” Avoid comparing one learner's result with another learner's result when the useful comparison is with the task criteria.
+\section{Keep records responsibly}
+Record only the information needed for teaching and assessment. Store records in the authorised place and share them only with people who have a legitimate reason to see them. Follow the school's retention and reporting requirements. Do not put learner scores or personal details in public chat groups or on an open display. If an error is found in a record, correct it through the agreed process and preserve any required audit trail.
+
+\chapter{Unit 8 -- Digital Safety, Privacy and Professional Conduct}
+\section{Use fictional data for practice}
+A classroom exercise rarely needs real addresses, phone numbers, identification numbers or marks. Use clearly fictional data instead. If a real record must be used under an approved school process, follow the required permissions, access controls and storage rules. Never copy sensitive information into a personal device or unapproved cloud service merely because it is convenient.
+\section{Account and device habits}
+Use individual accounts where available, keep passwords private and lock the screen when leaving a shared computer. Do not ask learners to reveal their passwords to prove they can sign in. Follow the institution's process for password resets. Keep software and security controls in place as directed by the responsible administrator, and do not install unapproved applications on school devices.
+\section{Email, links and unexpected requests}
+Pause before opening an unexpected attachment or entering a password after following a link. Check the sender and the context, and use a known route to contact the organisation if a request seems unusual. A message that creates urgency or asks for confidential data deserves extra care. Teach learners to report suspicious messages rather than forward them to classmates.
+\section{Safe file sharing}
+Before sharing a file, check the recipient, the contents and the permission level. A document intended for one teacher should not be placed in a folder that everyone can access. Use approved storage and remove access when it is no longer required, following the local procedure. Avoid sending sensitive records to a personal email account.
+\section{Professional conduct}
+Data-entry work involves trust. A professional operator does not guess missing information, share records out of curiosity, hide an error, or use information for personal reasons. If something seems wrong, stop and ask the authorised person. Explain to learners that reporting an error early is usually safer than quietly trying to conceal it.
+
+\chapter{Planning a Master Trainer Workshop}
+\section{A practical half-day structure}
+The schedule below is a sample, not a mandatory timetable. Adjust it to the local programme, the number of participants and the available equipment. Keep time for participants to practise; a workshop that contains only presentations will not show whether VTs can teach the tasks.
+\begin{longtable}{p{.17\textwidth}p{.28\textwidth}p{.43\textwidth}}
+\toprule\textbf{Time} & \textbf{Focus} & \textbf{Evidence or output}\\\midrule
+09:30--09:45 & Welcome and outcomes & Participants state one goal and one question\\
+09:45--10:15 & Model a data-entry task & Shared list of quality checks\\
+10:15--10:45 & Hands-on practice & Completed fictional record sheet\\
+10:45--11:00 & Break & --\\
+11:00--11:35 & Document or spreadsheet task & Saved file and peer review\\
+11:35--12:10 & Lesson planning & Draft lesson outcome and sequence\\
+12:10--12:40 & Microteaching & Observation checklist and feedback\\
+12:40--13:00 & Reflection and next steps & Individual action commitment\\\bottomrule
+\end{longtable}
+\section{Equipment and preparation checklist}
+\checklistitem Confirm the room, power and seating.\par
+\checklistitem Test the display and every software activity.\par
+\checklistitem Prepare a starter file and a clean backup.\par
+\checklistitem Use fictional sample data only.\par
+\checklistitem Print task sheets, observation forms and reflection prompts.\par
+\checklistitem Plan an offline alternative for any activity that does not truly require the internet.\par
+\checklistitem Check that every participant will have hands-on time.\par
+\section{Adapting to local conditions}
+If the room has fewer computers than participants, use rotating roles: operator, observer and quality checker. Rotate roles so each person gets hands-on time. If the internet is unreliable, use locally saved files and demonstrate offline tasks. If participants have different levels of experience, provide a core task for everyone and an extension task for those who finish early. Keep the shared learning outcome consistent.
+
+\chapter{Assessment Tools and Reusable Templates}
+\section{Template: lesson preparation}
+\begin{longtable}{p{.28\textwidth}p{.62\textwidth}}
+\toprule\textbf{Planning field} & \textbf{Notes}\\\midrule
+Lesson topic & \\ [12mm]\hline
+Observable learning outcome & \\ [15mm]\hline
+Prior knowledge to connect with & \\ [12mm]\hline
+Equipment and sample files & \\ [12mm]\hline
+Demonstration steps & \\ [18mm]\hline
+Learner practice task & \\ [18mm]\hline
+Evidence of learning & \\ [15mm]\hline
+Support or adaptation needed & \\ [15mm]\hline
+Reflection after the lesson & \\ [18mm]\hline
+\end{longtable}
+\section{Template: practical observation}
+\begin{longtable}{p{.48\textwidth}p{.16\textwidth}p{.24\textwidth}}
+\toprule\textbf{Observable behaviour} & \textbf{Observed?} & \textbf{Evidence / next step}\\\midrule
+Reads the task instructions before starting & & \\ [12mm]\hline
+Uses the correct source information & & \\ [12mm]\hline
+Enters information carefully & & \\ [12mm]\hline
+Checks required fields and likely errors & & \\ [12mm]\hline
+Saves work in the correct location & & \\ [12mm]\hline
+Can retrieve and explain the saved work & & \\ [12mm]\hline
+Handles records and accounts responsibly & & \\ [12mm]\hline
+\end{longtable}
+\section{Template: learner reflection}
+\begin{enumerate}
+\item What task did I complete today?
+\item Which step did I complete independently?
+\item What error or difficulty did I notice?
+\item How did I check whether my work was correct?
+\item What will I practise next?
+\end{enumerate}
+\vspace{4mm}\rule{\textwidth}{.4pt}\vspace{18mm}\rule{\textwidth}{.4pt}\vspace{18mm}\rule{\textwidth}{.4pt}
+\section{Template: feedback record}
+\begin{longtable}{p{.28\textwidth}p{.62\textwidth}}
+\toprule\textbf{Field} & \textbf{Record}\\\midrule
+Task observed & \\ [12mm]\hline
+What went well & \\ [15mm]\hline
+Evidence noticed & \\ [15mm]\hline
+One priority for improvement & \\ [15mm]\hline
+Agreed practice step & \\ [15mm]\hline
+Review date or next check & \\ [12mm]\hline
+\end{longtable}
+
+\chapter{Practical Lab 1 -- Enter and Verify a Small Record Set}
+\section{Purpose and materials}
+This lab gives VTs a complete example of the work cycle: read the source, enter the values, compare the result and report anything that cannot be resolved. Prepare a printed source sheet and a blank table. The example below uses fictional data only.
+\begin{center}\small\begin{tabularx}{.92\textwidth}{|c|X|c|X|}\hline
+\textbf{Record ID} & \textbf{Item} & \textbf{Quantity} & \textbf{Condition}\\\hline
+LAB-101 & Keyboard & 12 & Good\\\hline
+LAB-102 & Mouse & 14 & Good\\\hline
+LAB-103 & Monitor & 8 & Check required\\\hline
+LAB-104 & Headset & 6 & Good\\\hline
+LAB-105 & USB hub &  & Good\\\hline
+\end{tabularx}\end{center}
+\section{Procedure}
+Ask learners to enter the records exactly as supplied. They should not fill the blank quantity for LAB-105 from guesswork. They should preserve the note “Check required” for LAB-103 and identify it as a follow-up item. After entry, learners compare every field with the source. A partner then repeats the check independently and initials the practice sheet.
+\section{Evidence of learning}
+The learner has entered each supplied value accurately, has not invented the missing quantity, has flagged the follow-up item and can explain why the second check is useful. The trainer should ask the learner to point to the original source when explaining a correction.
+
+\chapter{Practical Lab 2 -- Keyboarding with a Quality Check}
+\section{Task}
+Use this short passage for a timed practice. The aim is not to beat another learner. The aim is to produce an accurate copy and notice which kinds of characters need extra attention.
+\begin{quote}\small
+The computer lab has 18 keyboards, 16 mice and 12 monitors. The equipment register was checked on 14 September. Two items need follow-up, and the final report must be saved before the end of the class.
+\end{quote}
+\section{Procedure}
+Give learners a short, unhurried first attempt. They should compare the result with the source and mark errors. Ask them to practise the sentence or number sequence where errors occurred, then repeat the task. Keep the conditions similar for both attempts. Do not use the score to rank learners publicly.
+\section{Observation prompts}
+\begin{itemize}
+\item Did the learner keep the source text visible?
+\item Did they use punctuation and capital letters as shown?
+\item Did they check the finished text rather than assume it was correct?
+\item Did the second attempt show a specific improvement?
+\end{itemize}
+
+\chapter{Practical Lab 3 -- Create, Save and Retrieve a Notice}
+\section{Task brief}
+Create a one-page notice for a fictional “Digital Records Practice Day.” Include the date, venue, purpose, three instructions and a contact role. Do not use real personal phone numbers or private information.
+\section{Suggested work sequence}
+\begin{enumerate}
+\item Plan the information the reader needs before opening the word processor.
+\item Create a new document and type the content.
+\item Make the title easy to identify and keep body text readable.
+\item Check spelling, dates and punctuation against the task brief.
+\item Save the file in the designated practice folder with a meaningful name.
+\item Close the document, reopen it and confirm that the saved version is correct.
+\end{enumerate}
+\section{Peer review checklist}
+\checklistitem The heading describes the purpose.\par
+\checklistitem The date and venue are present.\par
+\checklistitem Instructions are short and clear.\par
+\checklistitem Formatting is consistent and readable.\par
+\checklistitem The filename and folder make sense.\par
+\checklistitem The file can be reopened.\par
+
+\chapter{Practical Lab 4 -- Spreadsheet Entry and Cell References}
+\section{Starter data}
+Enter the following fictional equipment records into a worksheet. Use one row per item and one column per field.
+\begin{center}\small\begin{tabularx}{.94\textwidth}{|l|X|r|}\hline
+\textbf{Asset ID} & \textbf{Item} & \textbf{Quantity}\\\hline
+A-01 & Keyboard & 12\\\hline
+A-02 & Mouse & 14\\\hline
+A-03 & Monitor & 8\\\hline
+A-04 & Headset & 6\\\hline
+A-05 & Webcam & 5\\\hline
+\end{tabularx}\end{center}
+\section{Tasks}
+First enter the data and adjust column widths so the headings are readable. Identify the cell containing the quantity for the monitor. Identify the range containing all five quantities. If simple formulas are part of the prescribed syllabus, calculate the total quantity and check it independently by adding the five values manually. The expected total for this sample is 45.
+\section{Trainer discussion}
+Ask learners why headings matter, why each record should remain on one row, and how a sort could damage the table if only the Item column were selected. The purpose is to make the structure visible before introducing more complicated operations.
+
+\chapter{Practical Lab 5 -- Find and Report Data-Quality Issues}
+\section{Case sheet}
+A fictional inventory export contains these records:
+\begin{center}\small\begin{tabularx}{.96\textwidth}{|l|X|c|l|}\hline
+\textbf{ID} & \textbf{Item} & \textbf{Qty} & \textbf{Checked on}\\\hline
+A-01 & Keyboard & 12 & 14-09-2026\\\hline
+A-02 & Mouse & 14 & 14/09/2026\\\hline
+A-02 & Monitor & 8 & 14-09-2026\\\hline
+A-04 & Headset &  & 14-09-2026\\\hline
+A-05 & Webcam & 5 & 14-09-2026\\\hline
+\end{tabularx}\end{center}
+\section{Learner task}
+Identify the duplicate ID, the blank quantity and the inconsistent date formats. For each issue, state whether it can be corrected from the available source. Do not change A-02 on the third row until the original inventory source confirms the correct identifier. Do not fill the missing quantity until a reliable source provides it. The dates can be standardised only after the required format has been agreed.
+\section{Assessment focus}
+The trainer should listen for reasoning. A learner who spots an error but invents a replacement has not completed the full quality-control task. A strong response describes the issue, protects the record from an unsupported change and identifies the next person or source to consult.
+
+\chapter{Practical Lab 6 -- Design a Short Presentation}
+\section{Task brief}
+Prepare three slides for new students on the topic “Three Checks Before Submitting a Digital Record.” The audience is a Class IX group who are new to data entry. Keep the wording simple and use one visual only if it helps explain the point.
+\section{Suggested structure}
+\begin{enumerate}
+\item Slide 1: title and why checking matters.
+\item Slide 2: compare with the source, check required fields, look for unusual values.
+\item Slide 3: a small fictional error and the correct response.
+\end{enumerate}
+\section{Review questions}
+Can a learner at the back of the room read the text? Does each slide have one clear purpose? Does the visual support the message? Can the presenter explain the point without reading every line? Ask a peer to give one strength and one actionable suggestion.
+
+\chapter{Practical Lab 7 -- Teach a Five-Minute Demonstration}
+\section{Task brief}
+Teach a partner how to save a document and retrieve it. Before starting, state what the learner should be able to do at the end. Use a short demonstration, then let the partner repeat the task while you observe.
+\section{Observation rubric}
+\begin{center}\small\begin{tabularx}{.96\textwidth}{|X|c|X|}\hline
+\textbf{Evidence} & \textbf{Yes / not yet} & \textbf{Comment}\\\hline
+Outcome stated clearly & & \\\hline
+Steps shown at a learner-friendly pace & & \\\hline
+Learner gets hands-on practice & & \\\hline
+Trainer asks learner to verify the result & & \\\hline
+Feedback names a useful next step & & \\\hline
+\end{tabularx}\end{center}
+\section{Debrief}
+Ask the partner what was clear and where they hesitated. The trainer should not defend every choice. Select one adjustment to try in the next demonstration, such as showing the folder path more clearly or asking the learner to explain the retrieval step.
+
+\chapter{Practical Lab 8 -- Make a Safe Data-Handling Decision}
+\section{Scenarios}
+\begin{enumerate}
+\item A shared computer is left open with a learner record on screen.
+\item A colleague asks you to send a list of phone numbers to a personal email address.
+\item A spreadsheet has a blank required field and the deadline is near.
+\item An unfamiliar attachment asks you to sign in urgently.
+\end{enumerate}
+\section{Expected decision process}
+For each scenario, learners should name the risk, take the immediate safe action and identify the authorised reporting route. Lock the unattended screen according to local practice. Verify whether the request for personal data is authorised before sharing anything. Flag the blank field instead of guessing. Do not enter credentials through an unexpected link; verify the request using a trusted route and report suspicious messages according to policy.
+\section{Trainer note}
+Avoid asking participants to disclose real passwords, real incidents or confidential examples in front of the group. The aim is to practise a safe decision, not to expose someone or investigate an incident in the training room.
+
+\backmatter
+
+\end{document}
