@@ -1,0 +1,266 @@
+\documentclass[11pt,openany,oneside]{book}
+\usepackage[a4paper,top=25mm,bottom=23mm,left=25mm,right=22mm,headheight=16pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\usepackage{amssymb,xcolor,graphicx,array,booktabs,longtable,tabularx,colortbl,enumitem,tikz,tcolorbox,fancyhdr,titlesec,tocloft,hyperref,eso-pic,microtype}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+\definecolor{Navy}{HTML}{17365D}\definecolor{Teal}{HTML}{007F86}\definecolor{Pale}{HTML}{EAF6F7}\definecolor{Gold}{HTML}{E3A72F}\definecolor{Ink}{HTML}{293746}\definecolor{LightGold}{HTML}{FFF5DD}\definecolor{SoftGray}{HTML}{F4F6F9}\definecolor{Coral}{HTML}{D95D50}\definecolor{Violet}{HTML}{7656A6}\definecolor{Sky}{HTML}{DCEEFF}\definecolor{Rose}{HTML}{FCEBE8}
+\hypersetup{colorlinks=true,linkcolor=Teal,urlcolor=Teal,pdftitle={Domestic Data Entry Operator -- Class X},pdfauthor={Independent textbook-style learning resource}}
+\setlist[itemize]{leftmargin=1.5em,itemsep=1.5pt,topsep=2pt,parsep=0pt}\setlist[enumerate]{leftmargin=1.7em,itemsep=2pt,topsep=2pt,parsep=0pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}\setlength{\emergencystretch}{3em}
+\AddToShipoutPictureBG{\begin{tikzpicture}[remember picture,overlay]\draw[Navy!65,line width=.55pt] ([xshift=11mm,yshift=-11mm]current page.north west) rectangle ([xshift=-11mm,yshift=11mm]current page.south east);\draw[Teal,line width=1.6pt] ([xshift=11mm,yshift=-11mm]current page.north west)--([xshift=37mm,yshift=-11mm]current page.north west);\draw[Coral,line width=1.6pt] ([xshift=-11mm,yshift=11mm]current page.south east)--([xshift=-37mm,yshift=11mm]current page.south east);\fill[Gold] ([xshift=11mm,yshift=-11mm]current page.north west) circle (1.1mm);\fill[Violet] ([xshift=-11mm,yshift=11mm]current page.south east) circle (1.1mm);\end{tikzpicture}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\raisebox{-3.5mm}[0pt][0pt]{\small\bfseries\sffamily\color{Teal} DOMESTIC DATA ENTRY OPERATOR}}
+\fancyhead[R]{\raisebox{-3.5mm}[0pt][0pt]{\small\sffamily\color{Navy} CLASS X TEXTBOOK}}
+\fancyfoot[C]{\tikz[baseline=(n.base)]\node[fill=Teal,draw=Gold,line width=.7pt,text=white,circle,minimum size=7mm,inner sep=1pt,font=\small\bfseries] (n) {\thepage};}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Gold}\leaders\hrule height \headrulewidth\hfill}}
+\setlength{\headheight}{22pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[L]{\raisebox{-3.5mm}[0pt][0pt]{\small\bfseries\sffamily\color{Teal} DOMESTIC DATA ENTRY OPERATOR}}\fancyhead[R]{\raisebox{-3.5mm}[0pt][0pt]{\small\sffamily\color{Navy} CLASS X TEXTBOOK}}\fancyfoot[C]{\tikz[baseline=(n.base)]\node[fill=Teal,draw=Gold,line width=.7pt,text=white,circle,minimum size=7mm,inner sep=1pt,font=\small\bfseries] (n) {\thepage};}\renewcommand{\headrulewidth}{.5pt}\renewcommand{\headrule}{\hbox to\headwidth{\color{Gold}\leaders\hrule height \headrulewidth\hfill}}\renewcommand{\footrulewidth}{0pt}}
+\titleformat{\chapter}[display]{\normalfont\sffamily\bfseries\color{Navy}}{\filleft\Large\color{Coral}\chaptername\ \thechapter}{.6ex}{\color{Teal}\LARGE\raggedright}[\vspace{.5ex}\color{Gold}\rule{\textwidth}{.8pt}]\titlespacing*{\chapter}{0pt}{-8mm}{.5ex}\titlespacing*{\section}{0pt}{1.2ex plus .2ex minus .2ex}{.35ex}\titlespacing*{\subsection}{0pt}{1ex plus .2ex minus .2ex}{.3ex}\titleformat{\section}{\Large\sffamily\bfseries\color{Teal}}{\color{Coral}\thesection}{.7em}{}\titleformat{\subsection}{\large\sffamily\bfseries\color{Violet}}{\thesubsection}{.7em}{}
+\newcommand{\exampractice}[1]{\begin{tcolorbox}[colback=LightGold,colframe=Gold,boxrule=.6pt,arc=1.2mm,left=2mm,right=2mm,top=1mm,bottom=1mm]\textbf{Think and answer.} #1\end{tcolorbox}}
+\begin{document}
+\begin{titlepage}\thispagestyle{empty}\begin{tikzpicture}[remember picture,overlay]\fill[Navy] (current page.north west) rectangle ([yshift=-11.4cm]current page.north east);\fill[Teal] ([yshift=-11.4cm]current page.north west) rectangle ([yshift=-11.68cm]current page.north east);\fill[Coral] ([yshift=-11.68cm]current page.north west) rectangle ([yshift=-11.82cm]current page.north east);\draw[Gold,line width=2pt] ([xshift=22mm,yshift=-20mm]current page.north west)--([xshift=-22mm,yshift=-20mm]current page.north east);\draw[Gold,line width=1pt] ([xshift=22mm,yshift=-103mm]current page.north west)--([xshift=-22mm,yshift=-103mm]current page.north east);\end{tikzpicture}\vspace*{20mm}{\color{white}\rmfamily\bfseries\fontsize{38}{44}\selectfont HANDBOOK\par}\vspace{5mm}{\color{Gold}\rule{.72\textwidth}{1.2pt}\par}\vspace{7mm}{\color{white}\sffamily\Large Domestic Data Entry Operator\par}\vspace{3mm}{\color{white}\sffamily\large Class X Vocational Education\par}\vfill\begin{center}{\sffamily\Large\bfseries\color{Teal} Digital Documentation \textbullet\ Spreadsheets \textbullet\ Databases\par}\vspace{4mm}{\sffamily\large\color{Ink} A textbook-style study resource with examples, diagrams and questions\par}\end{center}\vfill\begin{center}{\small Master Trainer Handbook — Class X\par}\end{center}\end{titlepage}
+\frontmatter
+\tableofcontents
+\mainmatter
+\chapter{Introduction to Styles}
+\section{Why styles matter}
+A long document is easier to maintain when similar parts share the same formatting. A heading style can keep chapter titles consistent; a body-text style can keep paragraphs readable; and a caption style can give every figure the same treatment. Manual formatting changes one selection at a time. Styles record a set of choices so the same visual rule can be applied repeatedly and updated centrally.
+A style is a named collection of formatting properties. Consistent styles improve readability and make automatic navigation features possible.
+\section{Main style categories}
+Paragraph styles control complete paragraphs, including spacing and alignment. Character styles format selected words or characters. Page styles govern the page layout, margins, orientation, headers and footers. Frame styles format containers that may hold text or pictures. List styles control bullets and numbering, while table styles organise the appearance of tables. Use the category that matches the item being formatted.
+\begin{center}\includegraphics[width=.83\textwidth]{book_illustrations/style_categories.png}\end{center}
+\section{Applying a built-in style}
+Open a document and select the heading that needs formatting. Open the Styles panel from the menu or use the keyboard shortcut available in the installed version. Choose the paragraph-style category and apply an appropriate heading style. Repeat for other headings instead of formatting each one independently. For a longer report, check several pages to confirm that headings of the same level look alike.
+\section{Creating and updating styles}
+To create a custom style, first format a sample paragraph as required, then use the option to create a style from the selection. Give the style a meaningful name, such as \texttt{SectionHeading}. If a style already exists but needs a change, adjust a representative paragraph and use the update-style command. Test the change on more than one section before relying on it throughout a document.
+\section{Templates and page layout}
+A template is a starting document that contains reusable layout and style choices. Loading styles from another file can help maintain a consistent look, but it is sensible to test the result on a copy first. Page styles control margins, paper orientation, header/footer placement, background and borders. Use portrait pages for ordinary reports; landscape may be useful for a wide table.
+\section{Common errors}
+A heading that only looks bold is not necessarily a real heading style. This can prevent it appearing in a table of contents. Repeated spaces used for alignment may shift when fonts or page sizes change. Inconsistent page styles can create unexpected blank pages or different margins. Correct the underlying style rather than patching each occurrence individually.
+\section{Chapter questions}
+\begin{enumerate}\item What is a style, and why is it useful in a long document?\item Distinguish paragraph, character and page styles.\item How can a custom style be created from a formatted selection?\item Why should headings use heading styles when a table of contents is required?\item Give two examples of formatting problems caused by manual formatting.\end{enumerate}
+
+\chapter{Working with Images}
+\section{Choosing the right image}
+Images can explain a process, identify an object or make a document easier to scan. A picture should support the nearby text rather than simply fill space. For an office report, a small labelled diagram may be clearer than a decorative photograph. Confirm that an image is appropriate to the subject and that its licence or permission allows the intended use.
+\begin{center}\includegraphics[width=.86\textwidth]{book_illustrations/image_workflow.png}\end{center}
+\section{Insert, size and position}
+Place the cursor near the paragraph that introduces the image, then use the insert-image option. Resize from a corner handle where available so the original proportions are preserved. Use text wrapping and anchoring deliberately: an image anchored as a character behaves more like a large text character, while other anchor modes allow it to float beside text. After moving a picture, review the full page to catch overlapping text or unwanted gaps.
+\section{Cropping and visual correction}
+Cropping removes unwanted outer portions without changing the message of the remaining image. Brightness, contrast, transparency and colour adjustments can improve legibility, but excessive correction can hide details or misrepresent a picture. Keep the source image so that edits can be reversed. For diagrams, check that labels remain readable after the image is resized.
+\section{Captions and accessibility}
+A caption states what a figure shows, for example “Figure 2.1: Sequence for checking a document before submission.” Refer to the figure in the surrounding paragraph. Where the software supports alternative text, provide a concise description for readers who cannot see the image. Do not rely on colour alone to communicate a distinction.
+\section{Image layout checklist}
+Before saving, check that the picture has a clear purpose, is not distorted, does not cover text, uses a suitable wrap and anchor setting, has a useful caption, and remains readable at print size. Export a PDF and inspect the result because on-screen layout can differ from the final page.
+\section{Chapter questions}
+\begin{enumerate}\item Describe two reasons to include an image in a document.\item Why should an image normally be resized proportionally?\item Explain anchoring and text wrapping in your own words.\item What is cropping, and how is it different from resizing?\item Why are captions and alternative text helpful?\end{enumerate}
+
+\chapter{Advanced Features of Writer}
+\section{Table of contents}
+An automatically generated table of contents uses heading styles to identify chapter and section names. Apply consistent heading levels first, then insert the table of contents from the appropriate menu. When headings change, update the table rather than editing page numbers manually. A manual contents list may look correct at first, but becomes unreliable after pages are added or removed.
+\section{Templates and document properties}
+Templates support a uniform appearance across letters, notices and reports. Before using a template, check its paper size, margins, fonts and headings. Document properties can include title and author metadata; enter appropriate information and avoid leaving misleading details from a reused file. Save a new copy rather than overwriting an original template.
+\section{Track changes and review}
+Track Changes records additions and deletions so reviewers can inspect edits. Use it when a document is being reviewed by more than one person. Accept or reject changes deliberately and add comments that explain the reason for a proposed edit. Before sharing the final version, check whether comments or revision marks should remain visible and follow the organisation's document-handling rules.
+\section{Compare, protect and export}
+When a report is revised, check both the content and formatting. Use available comparison tools if the software version supports them. Password protection and editing restrictions should be applied only when they suit the file's purpose and local policy. Export to PDF for distribution when a stable layout is needed, then open the PDF and inspect headings, images, page numbers and page breaks.
+\section{Practice scenario}
+A team prepares a four-page meeting report. One colleague changes the headings, another corrects the wording, and a third adds two images. Use heading styles, a generated contents page and tracked changes to combine the work. Update the contents page at the end and export a review PDF. Identify which edits need acceptance before the report is final.
+\section{Chapter questions}
+\begin{enumerate}\item How does Writer build an automatic table of contents?\item What is the purpose of Track Changes?\item Why should comments and revisions be reviewed before distribution?\item Name three items to verify after exporting a PDF.\item How can templates save time while maintaining consistency?\end{enumerate}
+
+\chapter{Analyse Data Using Scenarios and Goal Seek}
+\section{What-if analysis}
+A spreadsheet model contains input values and formulas that calculate results. What-if analysis explores how the result changes when one or more inputs change. A scenario stores a group of assumptions, such as a low, expected or high estimate. Scenarios are useful for comparing possibilities; they do not predict which possibility will actually occur.
+\begin{center}\includegraphics[width=.83\textwidth]{book_illustrations/scenario_goal_seek.png}\end{center}
+\section{Build a small model}
+Imagine a school event budget with planned attendance, cost per participant and a fixed venue charge. Total cost can be calculated from the assumptions. Keep input cells clearly separated from formula cells and label units. Before comparing scenarios, confirm that each one changes the intended cells and that the formula uses the correct references.
+\section{Using Goal Seek}
+Goal Seek works backwards from a desired formula result to estimate the input value that would achieve it. Select the formula cell as the target, specify the desired value and identify the input cell the application may change. Review the returned value and confirm that the model is logical. It solves the selected relationship; it does not prove the assumptions are realistic.
+\section{Check the model}
+Test a simple case manually. Confirm that changing one input affects the expected outputs and that the target cell contains a formula. Save a separate copy before experimenting with a complex model. Write down the assumptions that make the result meaningful, especially when sharing the spreadsheet with someone who did not build it.
+\begin{center}\includegraphics[width=.86\textwidth]{book_illustrations/spreadsheet_formula.png}\end{center}
+\section{Chapter questions}
+\begin{enumerate}\item What is a scenario in a spreadsheet?\item Distinguish scenario analysis from Goal Seek.\item Why should assumptions and units be labelled?\item What checks should be made after Goal Seek returns a value?\item Give a practical example where comparing low, expected and high cases is useful.\end{enumerate}
+
+\chapter{Using Macros in a Spreadsheet}
+\section{Purpose of a macro}
+A macro automates a repeated sequence of operations. For example, a macro might apply the same number format to a report or prepare a standard print layout. Automation saves repetitive effort, but an incorrect macro can repeat a mistake across many cells. Understand what a macro does before using it on important files.
+\begin{center}\includegraphics[width=.86\textwidth]{book_illustrations/macro_safety.png}\end{center}
+\section{Recording and reviewing}
+Where macro recording is enabled, record a short harmless task on a sample sheet. Stop recording, give the macro a meaningful name and test it on a copy. Review whether it refers to fixed cells or to the intended active selection. Small changes in the workbook structure can affect recorded steps, so avoid assuming that a macro will work unchanged in every file.
+\section{Security and trust}
+Macros can carry out actions with the user's permissions. Do not enable a macro from an unexpected file simply because a message says it is required. Follow the software's security settings and the organisation's policy. Use trusted sources and keep a backup before running a macro that changes many cells.
+\section{Maintainable automation}
+Name macros clearly, document their purpose and test them on representative data. If a workbook changes, run the macro on a test copy before using it in production. Keep the manual procedure documented as a fallback. If an automated result looks wrong, stop and investigate instead of repeatedly rerunning the macro.
+\section{Chapter questions}
+\begin{enumerate}\item What kinds of repeated work can a macro automate?\item Why should a macro be tested on a copy of the workbook?\item Explain one security risk related to macros.\item Why is a clear macro name useful?\item What should you do if the output appears incorrect?\end{enumerate}
+
+\chapter{Linking Spreadsheet Data}
+\section{Why link data?}
+A workbook may contain related information on different sheets, or a report may need data from another file. Linking avoids typing the same values repeatedly, but it introduces a dependency: if the source moves or is unavailable, the link may not update as expected. Decide which file is authoritative and keep an understandable folder structure.
+\section{References between sheets}
+A cell reference points to a location in a worksheet. A formula can refer to another sheet so a summary uses the original record. Use descriptive sheet names and clear headings. When copying formulas, understand whether the references should change relative to the new position or remain fixed; test a copied formula with a small example.
+\section{External links and refreshing}
+External links may ask whether to update values when a workbook opens. Update only when the source is trusted and expected. If an imported result is unexpected, inspect the source path and the range being referenced. A displayed number may be old, linked to the wrong file or calculated from a range that no longer matches the data.
+\section{Practical case}
+An office keeps monthly stock records in separate sheets and a summary sheet with totals. Link the summary to the monthly sheets, change one practice quantity and check whether the summary changes. Then rename a copied practice file and observe how the external link behaves. Record the correct way to repair or re-establish the link in your software version.
+\section{Chapter questions}
+\begin{enumerate}\item Give two advantages and one risk of linking data.\item What is the difference between a reference within a workbook and an external link?\item Why should the source workbook be clearly identified?\item What might cause a linked value not to update?\item How can you test whether a link points to the correct cell?\end{enumerate}
+
+\chapter{Share and Review a Spreadsheet}
+\section{Collaboration and review}
+Spreadsheet review can involve checking formulas, confirming data sources and making sure that changes are understandable. In shared work, agree who is responsible for the master copy and how edits will be combined. The exact sharing and review tools depend on software version and storage platform; use only the features approved for the workplace.
+\section{Prepare a workbook for another user}
+Give each sheet a meaningful name, label columns and include units. Remove temporary test data from the copy intended for distribution. If some cells contain formulas, use cell protection where suitable and explain which cells may be edited. Protection can prevent accidental changes, but it is not a substitute for secure storage or access control.
+\section{Comments, changes and versioning}
+Use comments or notes to explain unusual values and assumptions. When several versions exist, use filenames or a document-management system that make the current version clear. Before merging edits, compare key totals and formulas. Do not assume two workbooks are equivalent simply because their first page looks the same.
+\section{Final review checklist}
+\begin{itemize}\item Check titles, date ranges, units and source references.\item Recalculate or refresh formulas where required.\item Look for blanks, duplicates and out-of-range values.\item Verify that sorting has not separated related columns.\item Check print area, page breaks and displayed sheet names.\item Confirm that recipients are authorised to view the workbook.\end{itemize}
+\section{Chapter questions}
+\begin{enumerate}\item What should be agreed before a spreadsheet is edited by several people?\item Why are clear sheet names and units important?\item Explain the difference between protecting cells and securing a file.\item Name four checks to perform before sharing a workbook.\item Why is version control important?\end{enumerate}
+
+\chapter{Introduction to Database Management System}
+\section{From files to a database}
+A database is an organised collection of related data. A Database Management System (DBMS) helps create, store, retrieve and maintain that data. A paper register or separate files can work for a small task, but duplicate records and inconsistent updates become harder to manage as the information grows. A database can enforce rules and connect related information in a structured way.
+\begin{center}\includegraphics[width=.86\textwidth]{book_illustrations/database_relationships.png}\end{center}
+\section{Tables, fields and records}
+A table stores one kind of entity, such as students, books or issued items. A field is a column describing an attribute; a record is one row describing an instance. For a library table, fields might include BookID, Title and Category. Choose data types that match the values, and avoid putting unrelated details into one field if they need to be searched or validated separately.
+\section{Keys and relationships}
+A primary key uniquely identifies each record. A foreign key stores a value that refers to a record in another table. Relationships reduce the need to repeat the same facts. In a library example, a Books table can be related to an Issues table through BookID. Referential integrity helps prevent a related record from pointing to a key that does not exist, subject to the design and rules configured in the database.
+\section{Database models}
+A relational database represents data in related tables. Other models organise relationships differently. For introductory office work, the relational model is particularly useful because tables, keys and queries can be explained with familiar records. Good design begins with understanding what each record represents and which facts belong together.
+\section{Chapter questions}
+\begin{enumerate}\item Define a database and a DBMS.\item Distinguish a field from a record.\item What is the role of a primary key?\item Explain a foreign key using a library example.\item Why can a relational database reduce unnecessary duplication?\end{enumerate}
+
+\chapter{Starting with LibreOffice Base}
+\section{Database objects}
+LibreOffice Base is a database front end that can work with different database arrangements. Depending on the chosen database type, a file may store data directly or connect to an external database engine. The main objects commonly introduced are tables, queries, forms and reports. Each serves a different purpose: tables store records, queries select or calculate information, forms support data entry, and reports present organised output.
+\section{Creating a new database}
+Start a new database from the application and follow the wizard for the required database type. Save it in the intended practice folder with a meaningful filename. Create a small table with fields such as AssetID, ItemName, Quantity and Condition. Select suitable data types and designate a unique field as the primary key where appropriate. Reopen the file to ensure the saved database is accessible.
+\section{Data types and validation}
+Text fields store names and codes; numeric fields store quantities or measurements; date fields store dates; and Boolean fields represent a true/false condition. A code that contains leading zeros may need to be stored as text so the zeros are preserved. Decide which fields may be blank and which should be required. Validation rules help reduce errors at the point of entry.
+\section{Enter and inspect records}
+Add a few fictional asset records, then navigate between rows and edit one value. Check that the changed value appears in the intended field. Try leaving a required field blank if the rule permits testing, then observe the validation response. Keep a clean copy before performing experiments that may affect the table structure.
+\section{Chapter questions}
+\begin{enumerate}\item Name four common database objects in Base.\item What is a data type? Give three examples.\item Why might an identification code be stored as text?\item What is the purpose of a primary key?\item Why should a new database be reopened after saving?\end{enumerate}
+
+\chapter{Working with Multiple Tables}
+\section{Avoiding repeated facts}
+If an office stores a person's details in every transaction row, the same name or address may be repeated many times. Updating one row but missing another creates inconsistency. Separate tables can store the entity once and link other records to it by a key. The right structure depends on the information and the questions users need to answer.
+\section{Relationships and integrity}
+A one-to-many relationship occurs when one record in a table relates to several records in another. For example, one customer may have many orders. The foreign key in the order table points to the customer key. Relationship rules should prevent invalid links and should consider what happens if a referenced record is updated or deleted. Do not delete a record without understanding its linked records and the organisation's retention needs.
+\section{Plan tables before creating them}
+List the entities, their attributes and the unique identifier for each. Draw the relationships and identify which table contains the foreign key. Then create the tables and test with a small set of records. If a value appears repeatedly in several records, ask whether it belongs in a separate related table.
+\begin{center}\small\begin{tabularx}{.9\textwidth}{|l|X|}\hline\textbf{Table} & \textbf{Example fields}\\\hline Books & BookID (key), Title, Category\\\hline Issues & IssueID (key), BookID (reference), IssueDate, ReturnDate\\\hline\end{tabularx}\end{center}
+\section{Chapter questions}
+\begin{enumerate}\item Why are related tables often preferable to one very large table?\item Explain a one-to-many relationship.\item What is referential integrity?\item In the example, which table contains the foreign key?\item What should be checked before deleting a record that other records reference?\end{enumerate}
+
+\chapter{Queries in Base}
+\section{What a query does}
+A query asks the database for a subset or calculated view of its data. It can select records matching conditions, choose particular fields, sort results and combine related tables. A query normally does not replace the underlying source table; it describes which information to retrieve. The exact design interface depends on the selected database and version.
+\begin{center}\includegraphics[width=.86\textwidth]{book_illustrations/query_process.png}\end{center}
+\section{Criteria and sorting}
+Suppose the asset register contains equipment in several conditions. A query can show only records whose Condition is “Needs Repair,” or sort all assets by ItemName. Criteria should match the field's data type. A date condition should use a valid date value, while text criteria need the correct spelling and should account for how the database handles case and spaces.
+\section{Queries involving several tables}
+A join connects related records through matching keys. When joins are incorrect, the output may omit records or multiply rows unexpectedly. Check that the joined fields represent the same type of identifier and that the relationship is correct. Use a small test with known records to verify the results.
+\section{Queries and privacy}
+A query can expose information even if the user does not open the original table directly. Return only fields needed for the task and share results with authorised recipients. Do not create broad exports containing personal information when a smaller summary would meet the requirement.
+\section{Chapter questions}
+\begin{enumerate}\item What is a query?\item How can criteria be used to select records?\item Why can an incorrect join produce misleading results?\item What should be checked when filtering date fields?\item How can a query support data privacy?\end{enumerate}
+
+\chapter{Forms and Reports}
+\section{Forms for data entry}
+Forms provide a user-friendly way to view or enter records without working directly in a table grid. Labels make fields understandable, and suitable controls can limit input errors. A form should follow the table design and make required fields clear. Test both adding and editing records so you know where the data is stored.
+\begin{center}\includegraphics[width=.83\textwidth]{book_illustrations/forms_reports.png}\end{center}
+\section{Reports for presentation}
+Reports organise selected data for reading, printing or review. A report may group records by category, include totals or show a date range. Before producing it, decide who will read it and which fields are necessary. Check that headings are meaningful and long values are not cut off. A neat report can still be wrong if the query or source data is wrong.
+\section{Designing and checking}
+Give forms clear labels and logical tab order. Use validation rules where supported and explain any required fields. For reports, include a title, date or reporting period where relevant, and suitable page numbering. Preview the report before printing or exporting. Compare a sample of displayed records with the source tables to confirm correctness.
+\section{Chapter questions}
+\begin{enumerate}\item What is the purpose of a form?\item How does a report differ from a table?\item Why should forms make required fields clear?\item Name four checks to make before distributing a report.\item Why must a report be checked against the query and source data?\end{enumerate}
+
+\chapter{Health, Safety and Security at Workplace}
+\section{Recognising workplace risks}
+Computer-based work can involve physical, environmental and information-security risks. Poor workstation setup may contribute to discomfort; clutter can create trip hazards; exposed electrical equipment can cause serious injury; and weak information handling can expose private records. Risk management starts by recognising hazards, considering who may be harmed and following the organisation's procedures.
+\begin{center}\includegraphics[width=.83\textwidth]{book_illustrations/healthy_workstation.png}\end{center}
+\section{Ergonomics and eye comfort}
+Arrange the chair, monitor, keyboard and mouse to suit the user and the task. Keep the screen readable and reduce distracting reflections. Change position periodically and take short visual breaks during extended work. If a person experiences persistent pain or eye discomfort, they should report it and seek appropriate professional advice rather than treating a textbook as medical guidance.
+\section{Stress and work organisation}
+Long periods of intense work, unclear instructions and constant interruptions can increase strain. Divide work into manageable tasks, clarify priorities and ask for assistance when a deadline conflicts with the expected quality. A realistic pace supports both wellbeing and accurate data handling. Supervisors should encourage reporting concerns early rather than rewarding unsafe shortcuts.
+\section{Electrical and physical safety}
+Keep liquids away from electrical equipment and do not handle plugs or devices with wet hands. Do not attempt repairs unless authorised and trained to do so. Keep walkways clear, route cables safely and report damaged equipment. Follow local procedures for ventilation, lighting, noise and equipment placement.
+\section{Information security at a workstation}
+Lock the screen when leaving a shared computer, use approved accounts and keep passwords confidential. Do not install unauthorised software or connect unknown devices. Confirm the recipient before sending a file and follow access rules for personal information. Physical safety and information security are both part of a responsible workplace.
+\section{Chapter questions}
+\begin{enumerate}\item What is a workplace hazard? Give three examples.\item Describe two adjustments that can make computer work more comfortable.\item Why should damaged electrical equipment be reported rather than repaired without authorisation?\item Name two actions that protect information on a shared workstation.\item How can work organisation help reduce avoidable stress?\end{enumerate}
+
+\chapter{Workplace Quality Measures}
+\section{Quality is built into the process}
+Quality work meets the stated requirement reliably, not just quickly. For data entry, this means using the correct source, entering values in the intended fields, checking completeness and protecting records. A quality process makes the expected standard visible and gives people a way to identify and correct errors.
+\section{Checks before submission}
+A final review can include a field-by-field comparison with the source, checking required fields, identifying duplicates, confirming date and number formats, and verifying that the file is saved in the correct place. The amount of checking should reflect the task's risk. High-impact records deserve careful review and the required approval.
+\begin{center}\includegraphics[width=.86\textwidth]{book_illustrations/data_quality_check.png}\end{center}
+\section{Documenting a problem}
+When an error cannot be resolved from the available source, mark it for follow-up and identify the appropriate person or process. Do not silently substitute a plausible value. A correction should follow the organisation's rules so the record remains understandable and, where required, traceable. Keep the note concise and avoid including unnecessary personal information.
+\section{Continuous improvement}
+If the same error occurs repeatedly, look for a process cause. The instruction may be unclear, a form may invite mistakes, or a field may lack a useful validation rule. A small change to the process can prevent many corrections later. Test the change and confirm that it improves quality without creating a new problem.
+\section{Chapter questions}
+\begin{enumerate}\item What is meant by quality in data-entry work?\item Name five checks that can be made before submitting a record set.\item Why is guessing a missing value unacceptable?\item How can repeated errors reveal a process problem?\item What does traceability mean in a correction process?\end{enumerate}
+
+\chapter{Prevent Accidents and Emergencies}
+\section{Preparedness before an incident}
+An emergency may arise from fire, electrical failure, injury, smoke, severe weather or another unexpected event. Each organisation should have an emergency action plan that identifies alarms, exit routes, assembly points, communication roles and procedures for obtaining assistance. Learn the local plan before an incident occurs; do not wait until the alarm sounds to look for an exit.
+\begin{center}\includegraphics[width=.86\textwidth]{book_illustrations/emergency_preparedness.jpg}\par{\footnotesize\textit{Fire drill photograph: Ben Schumin, Wikimedia Commons, CC BY-SA 2.5.}}\end{center}
+\begin{center}\includegraphics[width=.83\textwidth]{book_illustrations/emergency_route.jpg}\par{\footnotesize\textit{Emergency exit sign photograph: Hvardhana3, Wikimedia Commons, CC BY-SA 4.0.}}\end{center}
+\section{During evacuation}
+When an alarm or authorised evacuation instruction is given, follow the site's procedure, use the designated safe route and move calmly. Do not return to collect personal belongings. Do not use lifts where the plan says not to. Go to the assigned assembly point and follow instructions from the responsible coordinator. Never re-enter until the responsible authority says it is safe.
+\section{Fire and electrical incidents}
+Raise the alarm and contact the designated emergency service or internal response team according to local procedure. Only people with the proper training and a safe escape route should attempt to use firefighting equipment. Do not touch a person who may still be in contact with live electricity; keep clear and ensure power is isolated by a competent person when it is safe to do so. Follow trained responders' directions.
+\section{Injuries and first aid}
+Get help promptly. Provide first aid only within the limits of your training and the organisation's procedure. Do not move a seriously injured person unless there is an immediate danger that makes moving necessary. Give responders clear information about the location and known circumstances. Do not attempt a rescue that places you or others at further risk.
+\section{After the event}
+Once safe, report what happened through the appropriate channel. Record objective facts rather than guesses about the cause. Participate in the review process if asked and help identify practical steps that may reduce the chance of recurrence. Incident reports should be handled carefully and shared only with authorised people.
+\section{Chapter questions}
+\begin{enumerate}\item What information should an emergency action plan contain?\item What actions should be taken when an evacuation alarm is raised?\item Why should only trained people use firefighting equipment?\item What should you avoid doing during a suspected electrical accident?\item Why is objective incident reporting important?\end{enumerate}
+
+\appendix
+\chapter{Revision Questions}
+\section{Multiple-choice practice}
+Choose the best answer.
+\begin{enumerate}
+\item Which feature helps keep headings consistently formatted? (a) Manual spaces (b) Styles (c) Repeated blank lines (d) Random font changes
+\item Which operation removes unwanted outer parts of a picture? (a) Cropping (b) Sorting (c) Filtering (d) Joining
+\item Which Writer feature can generate a contents list from headings? (a) Word count (b) Track Changes (c) Table of Contents (d) AutoCorrect
+\item What-if scenarios are mainly used to: (a) compare sets of assumptions (b) repair a keyboard (c) lock a screen (d) create a database key
+\item Goal Seek works from a desired result to find: (a) an input value (b) a picture size (c) a page margin (d) a file name
+\item A macro is most useful for: (a) repeating a known sequence of operations (b) replacing backups (c) proving data is correct (d) granting access to everyone
+\item A primary key should: (a) identify a record uniquely (b) contain a paragraph (c) duplicate every other row (d) be optional for every design
+\item A query is used to: (a) retrieve selected data (b) replace all training (c) switch off the computer (d) crop an image
+\item A form mainly supports: (a) data entry and viewing (b) emergency evacuation (c) file compression only (d) keyboard repair
+\item When a building evacuation is ordered, you should: (a) collect all belongings first (b) follow the designated safe route (c) use any lift (d) return immediately
+\end{enumerate}
+\section{Short-answer practice}
+\begin{enumerate}
+\item Explain how paragraph styles help a long report remain consistent.
+\item Describe a safe sequence for inserting and reviewing an image.
+\item Give an example of a spreadsheet model suitable for Scenario Manager and Goal Seek.
+\item State two precautions to take before running a macro.
+\item Explain primary key, foreign key and referential integrity.
+\item Describe how a query can return only the fields needed for a report.
+\item List five quality checks for a spreadsheet before it is shared.
+\item Give four actions that contribute to a safe computer workstation.
+\item What should an employee do when a record contains missing information that cannot be confirmed?
+\item Why are practice records preferably fictional?
+\end{enumerate}
+\chapter{Answer Key for Revision Questions}
+\section{Multiple-choice answers}
+1. (b) Styles; 2. (a) Cropping; 3. (c) Table of Contents; 4. (a) compare sets of assumptions; 5. (a) an input value; 6. (a) repeating a known sequence of operations; 7. (a) identify a record uniquely; 8. (a) retrieve selected data; 9. (a) data entry and viewing; 10. (b) follow the designated safe route.
+\section{Short-answer marking guidance}
+Answers should use the concepts explained in the relevant chapters. Award credit for accurate definitions, suitable examples and a clear explanation of why the process matters. For practical questions, a strong answer describes a safe sequence, identifies the source of truth and includes a verification step. Accept other correct examples that meet the same principle.
+\backmatter
+\end{document}
