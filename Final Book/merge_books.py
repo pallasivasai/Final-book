@@ -96,7 +96,7 @@ def extract_body(path: Path) -> str:
     return text.strip()
 
 def inject_chapter_images(body: str) -> str:
-    """Give every chapter at least one relevant illustration, using downloaded Commons assets."""
+    """Use genuine, topic-relevant Commons photos and diagrams; never generate synthetic images."""
     concept_rules = [
         (r"artificial intelligence|machine learning|neural network|ai project|data pre-processing|data preprocessing", "ai-workflow.png", "Machine-learning workflow"),
         (r"database|\bsql\b|mysql|queries|relational", "database-architecture.png", "Database system architecture"),
@@ -112,6 +112,13 @@ def inject_chapter_images(body: str) -> str:
         (r"waste management|recycling|resource conservation", "recycling.jpg", "Recycling and resource conservation"),
         (r"disability|accessibility|inclusive|equality|diversity", "accessibility.jpg", "Accessible and inclusive workplaces"),
     ]
+    # Real photographs of people learning and working, matched to people-centred chapters.
+    human_rules = [
+        (r"data entry|typing|keyboarding|computer operator|office procedures|workplace communication|customer service|employability|teamwork|professionalism|workplace skills", "students-computer.jpg", "Learners practising computer skills"),
+        (r"trainer|training|teaching|classroom|learning|lesson planning|microteaching|assessment|feedback|vocational", "teacher-students.jpg", "A trainer supporting learners during practical computer work"),
+        (r"programming|coding|web development|software developer|computer application|digital literacy|computer fundamentals|computer skills|information technology", "students-coding.jpg", "Students learning computer programming"),
+        (r"accessibility|inclusive|diversity|disability", "classroom-india.jpg", "Computer education in a real classroom"),
+    ]
     parts = re.split(r"(?m)(\\chapter\*?\s*\{[^{}]*\})", body)
     if len(parts) < 3:
         return body
@@ -119,23 +126,40 @@ def inject_chapter_images(body: str) -> str:
     for i in range(1, len(parts), 2):
         heading = parts[i]
         section_body = parts[i + 1] if i + 1 < len(parts) else ""
-        # Existing real photos/diagrams already satisfy this chapter's illustration requirement.
-        if r"\includegraphics" not in section_body and r"\photo{" not in section_body:
-            title_match = re.search(r"\\chapter\*?\s*\{([^{}]*)\}", heading)
-            title = title_match.group(1) if title_match else ""
+        title_match = re.search(r"\\chapter\*?\s*\{([^{}]*)\}", heading)
+        title = title_match.group(1) if title_match else ""
+        has_visual = bool(re.search(r"\\includegraphics|\\photo\s*\{", section_body))
+        # Preserve existing photographs of people. If the chapter only has a diagram,
+        # add a real human photograph where the topic naturally involves people.
+        has_people_photo = bool(re.search(
+            r"(students-computer|students-coding|teacher-students|classroom-india|students_using|students_are_learning|training_teacher|computer_class|emergency_preparedness|emergency_route|training-room|web-development)",
+            section_body, flags=re.I
+        ))
+        human_choice = None
+        for pattern, candidate, caption in human_rules:
+            if re.search(pattern, title, flags=re.I):
+                human_choice = (candidate, caption)
+                break
+
+        def image_block(asset: str, caption: str) -> str:
+            credit = r"\footnotesize\textit{Photograph/illustration: Wikimedia Commons. Creator, source and licence details are listed in IMAGE-CREDITS.txt.}"
+            return (
+                "\n\\begin{center}\\IfFileExists{assets/concepts/" + asset + "}{"
+                "\\includegraphics[width=.72\\textwidth,height=34mm,keepaspectratio]{assets/concepts/" + asset + "}"
+                "\\par{\\small\\textit{" + caption + "}}\\par{" + credit + "}"
+                "}{}\\end{center}\n"
+            )
+
+        # A human-focused chapter gets a real photograph even when it already has a technical diagram.
+        if human_choice and not has_people_photo:
+            section_body = image_block(*human_choice) + section_body
+        elif not has_visual:
             asset, caption = "training-room.jpg", "Computer-based learning and practical work"
             for pattern, candidate, candidate_caption in concept_rules:
                 if re.search(pattern, title, flags=re.I):
                     asset, caption = candidate, candidate_caption
                     break
-            credit = r"\footnotesize\textit{Source: Wikimedia Commons; attribution and licence details are listed in IMAGE-CREDITS.txt.}"
-            block = (
-                "\n\\begin{center}\\IfFileExists{assets/concepts/" + asset + "}{"
-                "\\includegraphics[width=.72\\textwidth,height=31mm,keepaspectratio]{assets/concepts/" + asset + "}"
-                "\\par{\\small\\textit{" + caption + "}}\\par{" + credit + "}"
-                "}{}\\end{center}\n"
-            )
-            section_body = block + section_body
+            section_body = image_block(asset, caption) + section_body
         result.extend([heading, section_body])
     return "".join(result)
 
