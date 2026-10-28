@@ -152,6 +152,9 @@ jobs:
           fetch_concept "web-development.jpg" "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Students_at_a_school_in_Bangalore%2C_India_learning_to_code_on_Progate.jpg/1280px-Students_at_a_school_in_Bangalore%2C_India_learning_to_code_on_Progate.jpg" & pids+=("$!")
           fetch_concept "recycling.jpg" "https://upload.wikimedia.org/wikipedia/commons/b/b7/Recycling_Bins.jpg" & pids+=("$!")
           fetch_concept "accessibility.jpg" "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/A_wheelchair_beside_a_desk.jpg/960px-A_wheelchair_beside_a_desk.jpg" & pids+=("$!")
+          fetch_concept "students-computer.jpg" "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Students_using_a_computer.jpg/1280px-Students_using_a_computer.jpg" & pids+=("$!")
+          fetch_concept "teacher-students.jpg" "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Training_Teacher_%26_Students.jpg/960px-Training_Teacher_%26_Students.jpg" & pids+=("$!")
+          fetch_concept "classroom-india.jpg" "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Computer_class_Gujarat.jpg/960px-Computer_class_Gujarat.jpg" & pids+=("$!")
           status=0
           for pid in "${pids[@]}"; do wait "$pid" || status=1; done
           exit "$status"
