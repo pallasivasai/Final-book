@@ -128,33 +128,37 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "Final Book/assets/concepts"
+          # Commons can rate-limit burst downloads, so fetch sequentially with a pause and retries.
+          sleep 18
           fetch_concept() {
-            local filename="$1" url="$2"
-            if curl --retry 1 --connect-timeout 8 --max-time 40 -fLsS "$url" -o "Final Book/assets/concepts/$filename" && test -s "Final Book/assets/concepts/$filename"; then
-              echo "Fetched concept illustration: $filename"
-            else
-              echo "ERROR: Could not fetch concept illustration: $filename" >&2
+            local filename="$1" url="$2" attempt=1
+            while [ "$attempt" -le 4 ]; do
+              if curl -A "FinalBookEducationalTextbook/1.0 (Wikimedia Commons attribution)" --connect-timeout 8 --max-time 30 -fLsS "$url" -o "Final Book/assets/concepts/$filename" && test -s "Final Book/assets/concepts/$filename"; then
+                echo "Fetched concept illustration: $filename"
+                sleep 3
+                return 0
+              fi
+              echo "Retry $attempt for $filename after Commons rate limit/network response"
               rm -f "Final Book/assets/concepts/$filename"
-              return 1
-            fi
+              sleep $((attempt * 5))
+              attempt=$((attempt + 1))
+            done
+            echo "ERROR: Could not fetch concept illustration: $filename" >&2
+            return 1
           }
-          pids=()
-          fetch_concept "training-room.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Seamac%20Computer%20Based%20Training%20Room.jpg" & pids+=("$!")
-          fetch_concept "spreadsheet.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Libreoffice-calc.png" & pids+=("$!")
-          fetch_concept "data-visualization.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Data%20visualization.png" & pids+=("$!")
-          fetch_concept "database-architecture.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Architecture%20of%20database%20system.png" & pids+=("$!")
-          fetch_concept "network-topologies.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/NetworkTopologies.png" & pids+=("$!")
-          fetch_concept "security-lock.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Basic%20secure%20locking%20system.jpg" & pids+=("$!")
-          fetch_concept "ai-workflow.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Workflow%20of%20a%20machine-learning-based%20AI%20system.png" & pids+=("$!")
-          fetch_concept "python-code.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Python%20code%20example.png" & pids+=("$!")
-          fetch_concept "sdlc.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Software%20Development%20Lifecycle%20Diagram.png" & pids+=("$!")
-          fetch_concept "office-suite.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/LibreOffice%20Writer%2C%20Calc%2C%20Impress%20and%20Draw.png" & pids+=("$!")
-          fetch_concept "web-development.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Students%20at%20a%20school%20in%20Bangalore%2C%20India%20learning%20to%20code%20on%20Progate.jpg" & pids+=("$!")
-          fetch_concept "recycling.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Recycling%20Bins.jpg" & pids+=("$!")
-          fetch_concept "accessibility.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/A%20wheelchair%20beside%20a%20desk.jpg" & pids+=("$!")
-          status=0
-          for pid in "${pids[@]}"; do wait "$pid" || status=1; done
-          exit "$status"
+          fetch_concept "training-room.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Seamac%20Computer%20Based%20Training%20Room.jpg"
+          fetch_concept "spreadsheet.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Libreoffice-calc.png"
+          fetch_concept "data-visualization.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Data%20visualization.png"
+          fetch_concept "database-architecture.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Architecture%20of%20database%20system.png"
+          fetch_concept "network-topologies.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/NetworkTopologies.png"
+          fetch_concept "security-lock.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Basic%20secure%20locking%20system.jpg"
+          fetch_concept "ai-workflow.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Workflow%20of%20a%20machine-learning-based%20AI%20system.png"
+          fetch_concept "python-code.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Python%20code%20example.png"
+          fetch_concept "sdlc.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Software%20Development%20Lifecycle%20Diagram.png"
+          fetch_concept "office-suite.png" "https://commons.wikimedia.org/wiki/Special:Redirect/file/LibreOffice%20Writer%2C%20Calc%2C%20Impress%20and%20Draw.png"
+          fetch_concept "web-development.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Students%20at%20a%20school%20in%20Bangalore%2C%20India%20learning%20to%20code%20on%20Progate.jpg"
+          fetch_concept "recycling.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/Recycling%20Bins.jpg"
+          fetch_concept "accessibility.jpg" "https://commons.wikimedia.org/wiki/Special:Redirect/file/A%20wheelchair%20beside%20a%20desk.jpg"
 
       - name: Generate merged LaTeX source
         run: python "Final Book/merge_books.py"
