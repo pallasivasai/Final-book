@@ -120,7 +120,7 @@ def inject_chapter_images(body: str) -> str:
         heading = parts[i]
         section_body = parts[i + 1] if i + 1 < len(parts) else ""
         # Existing real photos/diagrams already satisfy this chapter's illustration requirement.
-        if r"\\includegraphics" not in section_body and r"\\photo{" not in section_body:
+        if r"\includegraphics" not in section_body and r"\photo{" not in section_body:
             title_match = re.search(r"\\chapter\*?\s*\{([^{}]*)\}", heading)
             title = title_match.group(1) if title_match else ""
             asset, caption = "training-room.jpg", "Computer-based learning and practical work"
