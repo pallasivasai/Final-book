@@ -1,0 +1,971 @@
+\documentclass[11pt,openany,oneside]{book}
+\usepackage[a4paper,top=25mm,bottom=23mm,left=25mm,right=22mm,headheight=22pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\usepackage{amssymb,xcolor,graphicx,array,booktabs,longtable,tabularx,colortbl,enumitem,tikz,tcolorbox,fancyhdr,titlesec,tocloft,hyperref,eso-pic,microtype,listings}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+
+% Color Palette Definitions
+\definecolor{Navy}{HTML}{17365D}
+\definecolor{Teal}{HTML}{007F86}
+\definecolor{Pale}{HTML}{EAF6F7}
+\definecolor{Gold}{HTML}{E3A72F}
+\definecolor{Ink}{HTML}{293746}
+\definecolor{LightGold}{HTML}{FFF5DD}
+\definecolor{SoftGray}{HTML}{F4F6F9}
+\definecolor{Coral}{HTML}{D95D50}
+\definecolor{Violet}{HTML}{7656A6}
+\definecolor{Sky}{HTML}{DCEEFF}
+\definecolor{Rose}{HTML}{FCEBE8}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=Teal,
+    urlcolor=Teal,
+    pdftitle={Web Developer -- Grade XI},
+    pdfauthor={Vocational Education Textbook}
+}
+
+% List Settings
+\setlist[itemize]{leftmargin=1.5em,itemsep=1.5pt,topsep=2pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=2pt,topsep=2pt,parsep=0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\setlength{\emergencystretch}{3em}
+
+% Define CSS and JavaScript explicitly; listings does not provide these
+% language names consistently across TeX Live installations.
+\lstdefinelanguage{CSS}{
+  sensitive=true,
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  alsoletter={-},
+  morekeywords={align-items,background,background-color,border,border-radius,box-shadow,
+    box-sizing,color,display,flex,font-family,font-size,font-weight,gap,grid-template-columns,
+    height,justify-content,margin,max-width,min-height,padding,position,transition,width,
+    @media,important,auto,block,grid,none,relative,absolute,center,solid,rem,px,white,black}
+}
+\lstdefinelanguage{JavaScript}{
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  morekeywords={const,let,var,function,return,if,else,for,while,break,continue,
+    class,new,this,throw,try,catch,finally,async,await,import,from,export,default,
+    true,false,null,undefined,typeof,instanceof,console,log,document,window,
+    addEventListener,querySelector,querySelectorAll,getElementById,Math,Number,String,
+    Array,Object,Promise,fetch}
+}
+% Code Listing Style
+\lstdefinestyle{webcode}{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{Navy}\bfseries,
+    commentstyle=\color{Teal},
+    stringstyle=\color{Violet},
+    numbers=left,
+    numberstyle=\tiny\color{Ink!65},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{Teal!55},
+    backgroundcolor=\color{SoftGray},
+    xleftmargin=2mm,
+    framexleftmargin=2mm,
+    aboveskip=5pt,
+    belowskip=5pt
+}
+
+% Page Border Layout Design
+\AddToShipoutPictureBG{
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw[Navy!65,line width=.55pt] ([xshift=11mm,yshift=-11mm]current page.north west) rectangle ([xshift=-11mm,yshift=11mm]current page.south east);
+    \draw[Teal,line width=1.6pt] ([xshift=11mm,yshift=-11mm]current page.north west)--([xshift=37mm,yshift=-11mm]current page.north west);
+    \draw[Coral,line width=1.6pt] ([xshift=-11mm,yshift=11mm]current page.south east)--([xshift=-37mm,yshift=11mm]current page.south east);
+    \fill[Gold] ([xshift=11mm,yshift=-11mm]current page.north west) circle (1.1mm);
+    \fill[Violet] ([xshift=-11mm,yshift=11mm]current page.south east) circle (1.1mm);
+  \end{tikzpicture}
+}
+
+% Header and Footer Configuration
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\raisebox{-3.5mm}[0pt][0pt]{\small\bfseries\sffamily\color{Teal} WEB DEVELOPER}}
+\fancyhead[R]{\raisebox{-3.5mm}[0pt][0pt]{\small\sffamily\color{Navy} GRADE XI TEXTBOOK}}
+\fancyfoot[C]{\tikz[baseline=(n.base)]\node[fill=Teal,draw=Gold,line width=.7pt,text=white,circle,minimum size=7mm,inner sep=1pt,font=\small\bfseries] (n) {\thepage};}
+\renewcommand{\headrulewidth}{.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Gold}\leaders\hrule height \headrulewidth\hfill}}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[L]{\raisebox{-3.5mm}[0pt][0pt]{\small\bfseries\sffamily\color{Teal} WEB DEVELOPER}}
+  \fancyhead[R]{\raisebox{-3.5mm}[0pt][0pt]{\small\sffamily\color{Navy} GRADE XI TEXTBOOK}}
+  \fancyfoot[C]{\tikz[baseline=(n.base)]\node[fill=Teal,draw=Gold,line width=.7pt,text=white,circle,minimum size=7mm,inner sep=1pt,font=\small\bfseries] (n) {\thepage};}
+  \renewcommand{\headrulewidth}{.5pt}
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{Gold}\leaders\hrule height \headrulewidth\hfill}}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Titles Formatting
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\bfseries\color{Navy}}
+  {\filleft\Large\color{Coral}\chaptername\ \thechapter}
+  {.6ex}
+  {\color{Teal}\LARGE\raggedright}[\vspace{.5ex}\color{Gold}\rule{\textwidth}{.8pt}]
+
+\titlespacing*{\chapter}{0pt}{-8mm}{.5ex}
+\titlespacing*{\section}{0pt}{1.2ex plus .2ex minus .2ex}{.35ex}
+\titlespacing*{\subsection}{0pt}{1ex plus .2ex minus .2ex}{.3ex}
+\titleformat{\section}{\Large\sffamily\bfseries\color{Teal}}{\color{Coral}\thesection}{.7em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries\color{Violet}}{\thesubsection}{.7em}{}
+
+\newcommand{\exampractice}[1]{\begin{tcolorbox}[colback=LightGold,colframe=Gold,boxrule=.6pt,arc=1.2mm,left=2mm,right=2mm,top=1mm,bottom=1mm]\textbf{Review questions.} #1\end{tcolorbox}}
+\newcommand{\keyterm}[1]{\textbf{\color{Navy}#1}}
+
+\begin{document}
+
+% Title Page Setup
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\fill[Navy] (current page.north west) rectangle ([yshift=-11.4cm]current page.north east);
+\fill[Teal] ([yshift=-11.4cm]current page.north west) rectangle ([yshift=-11.68cm]current page.north east);
+\fill[Coral] ([yshift=-11.68cm]current page.north west) rectangle ([yshift=-11.82cm]current page.north east);
+\draw[Gold,line width=2pt] ([xshift=22mm,yshift=-20mm]current page.north west)--([xshift=-22mm,yshift=-20mm]current page.north east);
+\draw[Gold,line width=1pt] ([xshift=22mm,yshift=-103mm]current page.north west)--([xshift=-22mm,yshift=-103mm]current page.north east);
+\end{tikzpicture}
+\vspace*{20mm}{\color{white}\rmfamily\bfseries\fontsize{38}{44}\selectfont HANDBOOK\par}
+\vspace{5mm}{\color{Gold}\rule{.72\textwidth}{1.2pt}\par}
+\vspace{7mm}{\color{white}\sffamily\LARGE Web Developer\par}
+\vspace{3mm}{\color{white}\sffamily\large Grade XI -- IT-ITeS Vocational Education\par}
+\vfill
+\begin{center}
+
+{\sffamily\Large\bfseries\color{Teal} Web Essentials \textbullet\ HTML \textbullet\ CSS \textbullet\ JavaScript \textbullet\ SDLC\par}
+\vspace{4mm}
+{\sffamily\large\color{Ink} A structured textbook guide designed for practical web development mastery.\par}
+\end{center}
+\vfill
+\begin{center}{\small Based on Grade XI Web Developer study material topics\par}\end{center}
+\end{titlepage}
+
+\frontmatter
+\tableofcontents
+\mainmatter
+
+\chapter{Web Design and Development}
+A website often begins with a simple question: what should people be able to find or do here? The answer shapes every decision that follows, from the first sketch of a page to the code that runs in a browser. Good web design helps visitors understand where they are and what they can do next. Good development turns that plan into a working site, checks that it behaves properly, and makes it dependable on different devices.
+
+The two activities work best together. A page may look attractive but still frustrate people if its navigation is confusing or its text is difficult to read. Likewise, a technically correct page is not very useful if visitors cannot find the information they came for. A thoughtful developer keeps the people using the website in mind while planning, designing, coding, testing, and improving it.
+
+\begin{center}
+\IfFileExists{images/web-developer-workspace.jpg}{
+  \includegraphics[width=.82\textwidth,height=55mm,keepaspectratio]{images/web-developer-workspace.jpg}
+}{
+  \fbox{\parbox{.8\textwidth}{\centering\textbf{A developer's workspace}\\A real-world example of the tools used to build and test a website.}}
+}
+\end{center}
+\textit{Figure 1.1.} A web developer's workspace. Photograph: Shixart1985, Wikimedia Commons, CC BY 2.0.
+
+\section{Understanding Web Design}
+Web design concerns the organisation and presentation of information on a website. It includes page layout, colour, typography, images, navigation, spacing, and the way a visitor moves from one task to another. Good design makes the purpose of each page clear and helps users find what they need without unnecessary effort.
+
+A designer begins by asking who will use the website, what those people need to do, and what information they expect to find. A school website, for example, may need clear links to admissions, courses, notices, and contact details. An online shop needs product information, prices, search and filtering, a cart, and a clear checkout path. The design should reflect the real purpose of the site rather than decorative trends alone.
+
+\subsection{User Interface and User Experience}
+The user interface (UI) is the part of the system with which a person interacts: menus, buttons, links, forms, headings, and visual controls. User experience (UX) is the broader experience of using the site, including how easy it is to learn, how quickly a task can be completed, and whether the process feels predictable and trustworthy.
+
+A visually attractive interface can still provide a poor experience if its navigation is confusing or its forms give unclear errors. Similarly, a simple interface can provide a strong experience when the content is well organised, controls are labelled clearly, and users receive helpful feedback after an action.
+
+\begin{center}
+\begin{tikzpicture}[node distance=7mm and 9mm,>=Latex]
+\node[draw=Navy,fill=Sky,rounded corners,minimum width=37mm,minimum height=11mm,align=center] (need) {\textbf{User need}\\What must be done?};
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=37mm,minimum height=11mm,align=center,right=of need] (ui) {\textbf{Interface}\\Pages and controls};
+\node[draw=Gold,fill=LightGold,rounded corners,minimum width=37mm,minimum height=11mm,align=center,below=of ui] (ux) {\textbf{Experience}\\Ease and confidence};
+\node[draw=Violet,fill=Violet!10,rounded corners,minimum width=37mm,minimum height=11mm,align=center,below=of need] (result) {\textbf{Outcome}\\Task completed};
+\draw[->,thick,Teal] (need)--(ui);
+\draw[->,thick,Teal] (ui)--(ux);
+\draw[->,thick,Teal] (ux)--(result);
+\draw[->,thick,Gold] (result)--(need);
+\end{tikzpicture}
+\end{center}
+\textit{Figure 1.1.} UI elements support a user experience that should lead to a clear outcome.
+
+\section{Understanding Web Development}
+Web development is the process of building and maintaining the website's structure, appearance, behaviour, and supporting services. Front-end development creates the part that runs in the browser. HTML describes the content and its meaning, CSS controls presentation and layout, and JavaScript adds behaviour such as menu interaction, input validation, and dynamic updates.
+
+Back-end development, when required, handles server-side tasks such as business rules, user authentication, data storage, and communication with other services. A database stores information in an organised form. An application programming interface (API) can provide a defined way for the browser or another application to request data or perform an operation. A small static information site may not need a back end; a learning portal with student accounts and saved results usually does.
+
+\begin{center}
+\begin{tikzpicture}[node distance=8mm and 18mm,>=Latex]
+\node[draw=Navy,fill=Sky,rounded corners,minimum width=34mm,minimum height=11mm,align=center] (user) {Visitor\\Browser};
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=36mm,minimum height=11mm,align=center,right=of user] (front) {Front end\\HTML + CSS + JS};
+\node[draw=Gold,fill=LightGold,rounded corners,minimum width=36mm,minimum height=11mm,align=center,right=of front] (server) {Server / API\\Application logic};
+\node[draw=Violet,fill=Violet!10,rounded corners,minimum width=30mm,minimum height=11mm,align=center,below=of server] (db) {Database};
+\draw[<->,thick,Teal] (user)--node[midway,above=7mm,font=\scriptsize,fill=white,inner sep=1pt]{requests / pages}(front);
+\draw[<->,thick,Teal] (front)--node[midway,above=7mm,font=\scriptsize,fill=white,inner sep=1pt]{HTTP requests}(server);
+\draw[<->,thick,Gold] (server)--node[midway,right=2mm,font=\scriptsize,fill=white,inner sep=1pt]{queries}(db);
+\end{tikzpicture}
+\end{center}
+\textit{Figure 1.2.} A common website architecture. A simple static site may use only the browser and front-end files.
+
+\subsection{Static and Dynamic Websites}
+A static website serves pages whose content is mainly prepared in files such as HTML, CSS, JavaScript, and images. It is suitable for portfolios, simple information pages, event announcements, and small documentation sites. A dynamic website can change its output based on user input, stored data, permissions, or other conditions. Examples include online banking, booking systems, shopping sites, and student portals.
+
+The distinction is about how the content is produced, not whether the page has styling or animation. A static page can be visually rich and interactive in the browser. A dynamic service often combines browser code with server-side processing and a database.
+
+\section{The Web Design and Development Life Cycle}
+The development life cycle provides a sequence of activities that helps a team move from an idea to a reliable website. The stages may overlap, and teams often return to earlier decisions after testing or feedback. The purpose of a life cycle is not to create paperwork for its own sake; it is to reduce avoidable mistakes, make decisions visible, and ensure that the final site meets its requirements.
+
+\begin{center}
+\begin{tikzpicture}[node distance=4mm,>=Latex]
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=25mm,minimum height=10mm,align=center] (req) {1. Discover\\Requirements};
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=25mm,minimum height=10mm,align=center,right=of req] (plan) {2. Plan\\Scope};
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=25mm,minimum height=10mm,align=center,right=of plan] (design) {3. Design\\Wireframe};
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=25mm,minimum height=10mm,align=center,right=of design] (build) {4. Build\\Code};
+\node[draw=Gold,fill=LightGold,rounded corners,minimum width=25mm,minimum height=10mm,align=center,below=of build] (test) {5. Test\\Correct};
+\node[draw=Gold,fill=LightGold,rounded corners,minimum width=25mm,minimum height=10mm,align=center,left=of test] (publish) {6. Publish\\Deploy};
+\node[draw=Violet,fill=Violet!10,rounded corners,minimum width=25mm,minimum height=10mm,align=center,left=of publish] (maintain) {7. Maintain\\Improve};
+\draw[->,thick,Teal] (req)--(plan);
+\draw[->,thick,Teal] (plan)--(design);
+\draw[->,thick,Teal] (design)--(build);
+\draw[->,thick,Gold] (build)--(test);
+\draw[->,thick,Gold] (test)--(publish);
+\draw[->,thick,Gold] (publish)--(maintain);
+\draw[->,thick,Coral] (maintain.south) -- ++(0,-8mm)
+  -| node[pos=.25,below,font=\scriptsize,fill=white,inner sep=1pt]{feedback and new needs} (req.south);
+\end{tikzpicture}
+\end{center}
+\textit{Figure 1.3.} A practical website life cycle with feedback after release.
+
+\subsection{Stage 1: Discover the Need}
+Identify the problem the website should solve and the people who will use it. Gather information from stakeholders, review existing material, and list the most important user tasks. For a school information site, these tasks may include finding a course, checking an announcement, or contacting the office. Clear goals prevent the project from becoming a collection of unrelated pages.
+
+\subsection{Stage 2: Plan the Work}
+Define the scope, deliverables, schedule, resources, and responsibilities. Decide which features are essential for the first version and which can wait. A page list and a simple task board can be sufficient for a small project. Planning should also consider risks such as missing content, unavailable images, device compatibility, privacy, and limited time.
+
+\subsection{Stage 3: Design the Structure and Appearance}
+Create a sitemap to show how pages relate to one another. Sketch wireframes to decide where headings, navigation, content, forms, and images should appear. Choose a consistent colour palette, type scale, spacing system, and button style. Review the design against the user tasks before investing time in detailed implementation.
+
+\begin{center}
+\begin{tikzpicture}[node distance=5mm and 8mm,>=Latex]
+\node[draw=Navy,fill=Sky,rounded corners,minimum width=31mm,minimum height=10mm,align=center] (home) {Home page};
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=31mm,minimum height=10mm,align=center,below left=of home] (courses) {Courses};
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=31mm,minimum height=10mm,align=center,below=of home] (news) {News};
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=31mm,minimum height=10mm,align=center,below right=of home] (contact) {Contact};
+\draw[thick,Teal] (home)--(courses);
+\draw[thick,Teal] (home)--(news);
+\draw[thick,Teal] (home)--(contact);
+\end{tikzpicture}
+\end{center}
+\textit{Figure 1.4.} Example sitemap for a small educational website.
+
+\subsection{Stage 4: Develop the Website}
+Build the page structure with semantic HTML, apply CSS for layout and responsive behaviour, and add JavaScript where interaction is needed. Keep files organised and use meaningful names. Work in small steps: create a page shell, check it in a browser, add one feature, and test again. This makes it easier to identify which change introduced a problem.
+
+\subsection{Stage 5: Test and Review}
+Testing checks whether the site behaves as intended. Confirm that links work, forms handle missing or invalid values, images load, text is readable, and the layout works on narrow and wide screens. Use keyboard navigation and inspect error messages in the browser's developer tools. Fix serious problems before publishing, then repeat the relevant tests after changes.
+
+\subsection{Stage 6: Publish and Deploy}
+Publishing makes the site available to its intended audience. Deployment may involve uploading static files to a hosting service, connecting a domain name, enabling HTTPS, configuring server settings, and checking that all paths work on the live site. A site that works on a developer's computer can still fail after deployment if file names, capitalisation, paths, permissions, or environment settings differ.
+
+\subsection{Stage 7: Maintain and Improve}
+After release, check for broken links, outdated information, security updates, performance problems, and user feedback. Keep a copy of the source files and a record of important changes. Maintenance is part of development, not an optional activity that begins only when something breaks.
+
+\section{Core Principles of Effective Web Design}
+\subsection{Visual Hierarchy}
+Visual hierarchy helps readers recognise what is most important. Main headings should be more prominent than body text; related items should be grouped; and primary actions should be easy to identify. Use size, weight, spacing, alignment, and colour consistently. Avoid giving every element the same visual emphasis, because this makes it harder to scan a page.
+
+\subsection{Consistency and Simplicity}
+Use the same navigation pattern, heading styles, button shapes, and spacing rules across related pages. Consistency reduces the effort required to learn the site. Simplicity does not mean removing necessary information; it means presenting the information in a clear order and avoiding decoration that competes with the task.
+
+\subsection{Colour and Typography}
+Choose colours that support the site's purpose and provide sufficient contrast between text and its background. Do not communicate important status using colour alone; pair colour with a label or icon where appropriate. Use a small, consistent set of readable fonts and line lengths. Body text should remain comfortable to read on both desktop and mobile displays.
+
+\subsection{Navigation and Content}
+Navigation labels should describe their destination, for example, “Courses” or “Contact”, rather than vague labels such as “Click here”. Put frequently used destinations where people expect them. Write concise headings, divide long material into meaningful sections, and ensure that images have a clear purpose. Content should answer the questions visitors came to resolve.
+
+\section{Responsive Design and Device Support}
+A responsive website adapts its layout to the available screen space. A multi-column desktop layout may become a single column on a phone; navigation may wrap or collapse; images should scale without distortion; and buttons should remain large enough to tap comfortably. Responsive design uses flexible layouts, relative sizing, and CSS media queries rather than building an entirely separate page for every device.
+
+\begin{center}
+\begin{tikzpicture}[node distance=7mm and 12mm,>=Latex]
+\node[draw=Navy,fill=Sky,rounded corners,minimum width=24mm,minimum height=18mm,align=center] (phone) {\textbf{Phone}\\Single column\\Stacked cards};
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=34mm,minimum height=23mm,align=center,right=of phone] (tablet) {\textbf{Tablet}\\Flexible columns\\Larger navigation};
+\node[draw=Gold,fill=LightGold,rounded corners,minimum width=42mm,minimum height=28mm,align=center,right=of tablet] (desktop) {\textbf{Desktop}\\Multiple columns\\Full page layout};
+\draw[->,thick,Teal] (phone)--(tablet);
+\draw[->,thick,Teal] (tablet)--(desktop);
+\end{tikzpicture}
+\end{center}
+\textit{Figure 1.5.} The same content can adapt to different viewport sizes.
+
+\section{Accessibility and Inclusive Design}
+Accessible design allows people with different abilities and ways of interacting to use a website. Provide meaningful headings, labels for form controls, alternative text for informative images, sufficient colour contrast, and visible keyboard focus. Ensure that interactive elements can be reached and operated without a mouse. Plain, direct language also helps users who are new to the subject or reading in a second language.
+
+Accessibility is best considered during planning and design, then checked throughout development. Retrofitting it at the end may require changing page structure and interaction patterns. A practical review includes keyboard-only navigation, zooming text, checking labels, and verifying that the purpose of each link is understandable.
+
+\section{Designing for Quality, Security and Performance}
+Quality includes correctness, usability, reliability, maintainability, accessibility, and performance. Optimise images so that they are not unnecessarily large, avoid loading resources that are not needed, and test pages on a realistic connection. Keep dependencies and source files organised so another developer can understand the project.
+
+Security must also influence design decisions. Collect only the information the site actually needs, explain why it is collected, and avoid placing passwords, private keys, or secret tokens in front-end code. Use HTTPS for deployed sites and apply appropriate validation and access controls when server-side features are involved. A polished interface cannot compensate for unsafe handling of user data.
+
+\section{Example: Planning a Learning Centre Website}
+Consider a learning centre that needs to publish courses, class schedules, announcements, and contact information. Before coding, the team identifies the main visitors: learners, parents, and staff. The essential pages are Home, Courses, Notices, and Contact. The home page introduces the centre and links to the most common tasks; the courses page provides names, descriptions, and eligibility information; the notices page lists dated updates; and the contact page gives verified contact details.
+
+The first version can be a static website if the information is updated manually. If staff later need to sign in and manage notices, the project may require authentication, a server, and a database. This illustrates an important planning rule: begin with the simplest solution that satisfies the confirmed need, then add complexity only when a real requirement justifies it.
+
+\section{Chapter Review}
+\begin{enumerate}
+\item Distinguish web design from web development and give two examples of work done in each area.
+\item Explain the difference between user interface (UI) and user experience (UX).
+\item Describe the role of HTML, CSS, JavaScript, a server, an API, and a database in a website.
+\item Compare static and dynamic websites and provide one suitable example of each.
+\item List the major stages of the web design and development life cycle.
+\item Explain why requirements and scope should be discussed before coding begins.
+\item What is a wireframe, and how does it help a development team?
+\item Describe four principles of effective web design.
+\item Explain responsive design and name two ways a page can adapt to a phone screen.
+\item Identify four accessibility checks that should be completed before launch.
+\item Why should testing and maintenance continue after a website is published?
+\item For a learning centre website, identify the main users, essential pages, and one feature that could be postponed to a later release.
+\end{enumerate}
+
+\chapter{HTML: Document Architecture}
+
+\begin{center}
+\IfFileExists{images/html-coding.jpg}{
+  \includegraphics[width=.78\textwidth,height=42mm,keepaspectratio]{images/html-coding.jpg}
+}{
+  \fbox{\parbox{.72\textwidth}{\centering Figure 2.1. A learner working with HTML and CSS code. Photo: hackNY / Matylda, CC BY-SA 2.0.}}
+}
+\end{center}
+\textit{Figure 2.1. A learner working with HTML and CSS code. Photo: hackNY / Matylda, CC BY-SA 2.0.}
+HyperText Markup Language (HTML) provides the fundamental skeletal structure for web content. Elements encapsulate textual data and media objects using semantic tags.
+
+\begin{lstlisting}[style=webcode,language=HTML]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Handbook</title>
+</head>
+<body>
+  <header>
+    <h1>Web Development Basics</h1>
+  </header>
+  <main>
+    <p>Semantic document structures improve accessibility and indexing.</p>
+  </main>
+</body>
+</html>
+\end{lstlisting}
+
+\section*{Review Questions}
+\begin{enumerate}
+\item What purpose does the \texttt{<!DOCTYPE html>} declaration serve?
+\item Write out a basic semantic HTML skeleton including a header, main container, and footer.
+\end{enumerate}
+
+\chapter{CSS Layouts and Box Model}
+
+\begin{center}
+\IfFileExists{images/responsive-devices.jpg}{
+  \includegraphics[width=.78\textwidth,height=42mm,keepaspectratio]{images/responsive-devices.jpg}
+}{
+  \fbox{\parbox{.72\textwidth}{\centering Figure 3.1. Responsive design adapts a website to desktop, tablet and phone screens. Photo: Muhammad Rafizeldi, CC BY-SA 3.0.}}
+}
+\end{center}
+\textit{Figure 3.1. Responsive design adapts a website to desktop, tablet and phone screens. Photo: Muhammad Rafizeldi, CC BY-SA 3.0.}
+Cascading Style Sheets (CSS) control visual presentation, spacing, typography, colors, and layout positioning across device viewports.
+
+\begin{center}
+\begin{tikzpicture}
+\draw[fill=Gold!22,draw=none] (0,0) rectangle (10,5.2);
+\draw[fill=Coral!18,draw=none] (.7,.7) rectangle (9.3,4.5);
+\draw[fill=Teal!18,draw=none] (1.4,1.3) rectangle (8.6,3.9);
+\draw[fill=Sky,draw=none] (2.1,1.95) rectangle (7.9,3.25);
+\draw[Gold!80!black,thick] (0,0) rectangle (10,5.2);
+\draw[Coral!80!black,thick] (.7,.7) rectangle (9.3,4.5);
+\draw[Teal!80!black,thick] (1.4,1.3) rectangle (8.6,3.9);
+\draw[Navy,thick] (2.1,1.95) rectangle (7.9,3.25);
+\node[font=\sffamily\bfseries] at (5,4.85) {Margin};
+\node[font=\sffamily\bfseries] at (5,4.2) {Border};
+\node[font=\sffamily\bfseries] at (5,3.55) {Padding};
+\node[font=\sffamily\bfseries\color{Navy}] at (5,2.6) {Content};
+\end{tikzpicture}
+\end{center}
+\textit{Figure 4.1.} Visual layers of the CSS Box Model.
+
+\begin{lstlisting}[style=webcode,language=CSS]
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem;
+  border: 1px solid #007F86;
+  background-color: #EAF6F7;
+}
+\end{lstlisting}
+
+\section*{Review Questions}
+\begin{enumerate}
+\item Describe the four components comprising the CSS Box Model.
+\item Explain how \texttt{box-sizing: border-box} simplifies spatial calculations.
+\end{enumerate}
+
+\chapter{JavaScript Fundamentals}
+
+\begin{center}
+\IfFileExists{images/programming-code.jpg}{
+  \includegraphics[width=.78\textwidth,height=42mm,keepaspectratio]{images/programming-code.jpg}
+}{
+  \fbox{\parbox{.72\textwidth}{\centering Figure 4.1. Source code is written and reviewed in a programming editor. Photo: Martin Vorel, CC BY-SA 4.0.}}
+}
+\end{center}
+\textit{Figure 4.1. Source code is written and reviewed in a programming editor. Photo: Martin Vorel, CC BY-SA 4.0.}
+JavaScript enables dynamic interactive behaviors, state manipulation, event processing, and asynchronous network communication directly within client browser environments.
+
+\begin{center}
+\begin{tikzpicture}[node distance=6mm,>=Latex]
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=31mm,minimum height=12mm,align=center] (h) {\textbf{HTML}\\Structure};
+\node[draw=Gold,fill=LightGold,rounded corners,minimum width=31mm,minimum height=12mm,align=center,right=of h] (c) {\textbf{CSS}\\Presentation};
+\node[draw=Violet,fill=Violet!10,rounded corners,minimum width=31mm,minimum height=12mm,align=center,right=of c] (j) {\textbf{JavaScript}\\Behavior};
+\draw[<->,thick,Coral] (h)--(c);\draw[<->,thick,Coral] (c)--(j);
+\end{tikzpicture}
+\end{center}
+\textit{Figure 5.1.} The triad of front-end web development technologies.
+
+\begin{lstlisting}[style=webcode,language=JavaScript]
+const calculateTotal = (price, taxRate) => {
+  if (price <= 0) {
+    throw new Error("Invalid price value provided.");
+  }
+  return price + (price * taxRate);
+};
+
+console.log(calculateTotal(100, 0.18));
+\end{lstlisting}
+
+\section*{Review Questions}
+\begin{enumerate}
+\item Contrast \texttt{let} and \texttt{const} variable scoping rules.
+\item Explain how event listeners bind user actions to script logic.
+\end{enumerate}
+
+
+
+% Additional textbook chapters for a fuller Grade XI learning resource.
+\chapter{Requirements, Planning and Project Documents}
+\section{Understanding the Need}
+A web project begins by understanding the problem it is expected to solve. A website for a school, a small shop, a public service office, and an online learning platform may all use a browser, but each has different users, content, rules, and success measures. Clear requirements prevent avoidable rework and help a team agree on what must be delivered.
+
+\subsection{Stakeholders and Users}
+A stakeholder is a person or group affected by the project. Stakeholders may include the customer, website visitors, content editors, administrators, support staff, and the organisation responsible for maintaining the site. Users should be described by their goals rather than by assumptions about their age, device, or technical knowledge.
+
+\subsection{Functional and Non-functional Requirements}
+Functional requirements describe what the system must do: display a product catalogue, validate a form, search for an article, or allow an authorised editor to update content. Non-functional requirements describe qualities and constraints, such as response time, accessibility, security, browser support, reliability, and ease of maintenance.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{.24\textwidth}X}
+\toprule
+Requirement type & Example for a school website\\
+\midrule
+Functional & A visitor can view announcements and download the academic calendar.\\
+Usability & Navigation labels are understandable to first-time visitors.\\
+Accessibility & Content can be navigated using a keyboard and read by assistive technology.\\
+Performance & Pages avoid unnecessarily large images and scripts.\\
+Security & Administrative editing features require authentication.\\
+Maintainability & Repeated page elements use consistent templates and styles.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Brief Requirements Document}
+A simple project brief should record the purpose, target audience, main pages, required functions, content owner, constraints, and acceptance criteria. Acceptance criteria are observable conditions used to decide whether a feature is complete. For example, “the contact form is finished” is vague; “the form identifies missing required fields and displays a clear confirmation after valid submission” is testable.
+
+\section{Planning and Scope}
+Scope defines what is included and what is excluded. A small first release may include a home page, about page, services page, and contact form. A payment system or user account feature may be planned for a later release. A scope list helps the team manage time and avoid adding unplanned work without reviewing its impact.
+
+
+\section{Business and Software Requirements}
+A Business Requirements Document (BRD) describes the business need, intended users, goals, scope, constraints, and expected outcomes. A Software Requirements Specification (SRS) translates the agreed need into detailed system behaviour, interfaces, data requirements, and quality expectations. These documents should be clear enough that a developer can implement the work and a tester can verify it.
+
+A practical BRD may contain the problem statement, project objectives, stakeholders, scope, assumptions, constraints, risks, and acceptance criteria. An SRS may describe functional requirements, non-functional requirements, input and output formats, error handling, external interfaces, and security expectations. For a small classroom project, these can be concise documents rather than lengthy reports.
+
+\section{High-Level and Low-Level Design}
+High-level design (HLD) describes the major components of a solution and how they communicate. For a website, it may show the browser interface, application server, database, and external services. Low-level design (LLD) describes the details needed to implement a component, such as field names, validation rules, function responsibilities, or the structure of a page.
+
+\begin{center}
+\begin{tikzpicture}[node distance=6mm,>=Latex]
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=35mm,minimum height=10mm,align=center] (req) {Requirements\\BRD / SRS};
+\node[draw=Gold,fill=LightGold,rounded corners,minimum width=35mm,minimum height=10mm,align=center,right=of req] (hld) {High-level design\\Components};
+\node[draw=Violet,fill=Violet!10,rounded corners,minimum width=35mm,minimum height=10mm,align=center,right=of hld] (lld) {Low-level design\\Implementation detail};
+\draw[->,thick,Teal] (req)--(hld);
+\draw[->,thick,Teal] (hld)--(lld);
+\end{tikzpicture}
+\end{center}
+\textit{Figure 3.1.} Requirements are refined into architecture and implementation detail.
+
+\section{Design Models and Interfaces}
+Object-oriented design organises a system around objects that combine data and behaviour. Database design identifies the information that must be stored and the relationships between records. API design defines how separate software components exchange requests and responses. The chosen design should match the project size and should not introduce complexity without a clear need.
+
+\section*{Review Questions}
+\begin{enumerate}
+\item Distinguish functional requirements from non-functional requirements.
+\item Name four stakeholders who may be involved in a website project.
+\item Write three acceptance criteria for a school announcements page.
+\item Why is it useful to define project scope before coding begins?
+\end{enumerate}
+
+\chapter{Web Technologies, Browsers and HTTP}
+\section{How a Web Page Reaches a Browser}
+When a visitor enters a website address, the browser uses network services to locate the destination server and request resources. The server returns a response, often containing HTML, CSS, JavaScript, images, fonts, or data. The browser interprets these resources and constructs the visible page. This process may involve many requests rather than a single file.
+
+\begin{center}
+\begin{tikzpicture}[>=Latex]
+% Keep message labels in their own lanes so they never collide with node text.
+\node[draw=Teal,fill=Pale,rounded corners,minimum width=34mm,minimum height=12mm,align=center] (u) at (0,0) {User and browser};
+\node[draw=Violet,fill=Violet!10,rounded corners,minimum width=34mm,minimum height=12mm,align=center] (s) at (10,0) {Web server};
+\draw[->,line width=1pt,Teal] ([yshift=2mm]u.east) -- ([yshift=2mm]s.west)
+  node[midway,above=3mm,font=\small\bfseries,text=Teal,fill=white,inner sep=2pt] {HTTP request};
+\draw[->,line width=1pt,Coral] ([yshift=-2mm]s.west) -- ([yshift=-2mm]u.east)
+  node[midway,below=3mm,font=\small\bfseries,text=Coral,fill=white,inner sep=2pt] {HTTP response};
+\end{tikzpicture}
+\end{center}
+\textit{Figure 7.1.} A simplified browser-to-server request and response.
+
+\section{HTTP and HTTPS}
+HTTP is a protocol used for communication between clients and web servers. A request commonly identifies a method, a resource path, headers, and sometimes a body. A response contains a status code, headers, and usually content. HTTPS protects HTTP communication using TLS, helping protect data from interception or alteration while it travels across the network.
+
+\subsection{Common Status Codes}
+\begin{itemize}
+\item \textbf{200 OK:} The request was processed successfully.
+\item \textbf{301 or 302:} The resource has been redirected.
+\item \textbf{400 Bad Request:} The server could not process the request as sent.
+\item \textbf{401 Unauthorized:} Authentication is required or has not succeeded.
+\item \textbf{403 Forbidden:} The server refuses access to the requested resource.
+\item \textbf{404 Not Found:} The requested resource could not be found.
+\item \textbf{500 Internal Server Error:} The server encountered an unexpected condition.
+\end{itemize}
+
+\section{Browser Developer Tools}
+Developer tools help inspect HTML elements, view computed CSS, monitor network requests, read console messages, and test responsive layouts. They are useful for learning because a developer can change a style temporarily, observe the result, and then apply a tested correction to the source code.
+
+
+\section{Development Tools and Standards}
+A web developer commonly uses a code editor, browser, developer tools, image editor, version-control system, and a local testing environment. A code editor helps organise files and detect syntax mistakes; a browser displays the result; developer tools help investigate layout, script, and network problems; and version control records changes so that earlier working versions can be recovered.
+
+HTML, CSS, and JavaScript are interpreted by browsers according to web standards. Consistent indentation, meaningful file names, and a clear folder structure make a project easier to review. A small site might use \texttt{index.html}, \texttt{styles.css}, \texttt{script.js}, and an \texttt{images} folder. Keep source files separate by responsibility unless a particular platform requires another structure.
+
+\section{Common Application Development Models}
+The Waterfall model organises work into sequential phases such as requirements, design, implementation, testing, and maintenance. It can be straightforward when requirements are stable, but changes discovered late may be expensive. The Iterative model develops a solution through repeated cycles, refining it after feedback. Agile approaches organise work into small increments and encourage frequent collaboration, review, and adaptation.
+
+No single model is best for every project. A small student website may be planned with a simple checklist and improved after each review. A regulated or large system may need formal documentation and approval steps. The useful question is whether the chosen process helps the team deliver the required quality while responding appropriately to change.
+
+\section*{Review Questions}
+\begin{enumerate}
+\item Describe the basic request-and-response cycle of a web page.
+\item Why is HTTPS preferred when information is sent between a browser and server?
+\item Explain the difference between a 404 response and a 500 response.
+\item Name three tasks that browser developer tools can support.
+\end{enumerate}
+
+\chapter{Semantic HTML and Accessible Structure}
+\section{Meaningful HTML Elements}
+Semantic HTML uses elements that communicate the role of content. Elements such as \texttt{header}, \texttt{nav}, \texttt{main}, \texttt{article}, \texttt{section}, and \texttt{footer} provide more meaning than using generic containers for every part of a page. Clear structure can improve maintainability and help assistive technologies interpret the document.
+
+\begin{lstlisting}[style=webcode,language=HTML]
+<header>
+  <h1>Community Learning Centre</h1>
+  <nav aria-label="Main navigation">
+    <a href="#courses">Courses</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+<main>
+  <section id="courses">
+    <h2>Available courses</h2>
+    <p>Explore the current learning options.</p>
+  </section>
+</main>
+<footer>
+  <p>Contact the centre for further information.</p>
+</footer>
+\end{lstlisting}
+
+\section{Headings and Content Hierarchy}
+Headings should describe the topic beneath them and follow a logical hierarchy. A page usually has one main heading, followed by section headings and, where necessary, subheadings. Heading levels should not be selected merely to obtain a desired font size; visual appearance belongs in CSS, while the heading element communicates structure.
+
+
+\section{Lists and Grouped Information}
+HTML supports ordered lists, unordered lists, and description lists. Use an unordered list when the order does not matter, such as a list of required materials. Use an ordered list when the sequence matters, such as installation steps. A description list can pair terms with their explanations.
+
+\begin{lstlisting}[style=webcode,language=HTML]
+<h2>Preparation checklist</h2>
+<ul>
+  <li>Open the code editor.</li>
+  <li>Create a project folder.</li>
+  <li>Save the first HTML page.</li>
+</ul>
+
+<h2>Development sequence</h2>
+<ol>
+  <li>Plan the page.</li>
+  <li>Build the structure.</li>
+  <li>Test the result.</li>
+</ol>
+\end{lstlisting}
+Nested lists are useful when a main item has related sub-items, but deep nesting can make information difficult to scan. Choose the list type according to the meaning of the content, not its default appearance.
+
+\section{Links, Images and Alternative Text}
+Link text should tell users what will happen when it is selected. Phrases such as “Read the admission requirements” are more informative than repeated “click here” links. Images that communicate information should have concise alternative text. Decorative images can use empty alternative text so that assistive technologies do not announce unnecessary details.
+
+\section{Forms and Labels}
+A form control should have a clear label. Placeholder text is not a replacement for a label because it disappears when the user enters a value and may be difficult to read. Required fields should be indicated clearly, and error messages should explain how to correct a problem.
+
+\begin{lstlisting}[style=webcode,language=HTML]
+<form>
+  <label for="email">Email address</label>
+  <input id="email" name="email" type="email" required>
+  <button type="submit">Send request</button>
+</form>
+\end{lstlisting}
+
+\section*{Review Questions}
+\begin{enumerate}
+\item What is the purpose of semantic HTML?
+\item Explain why heading levels should follow a meaningful order.
+\item What makes alternative text useful?
+\item Why should a form input have an associated label?
+\end{enumerate}
+
+\chapter{CSS Selectors, Cascade and Responsive Layout}
+\section{Selectors}
+CSS selectors identify the elements to which a rule applies. Element selectors target a tag name, class selectors target a reusable class, and ID selectors target an element with a specific identifier. Selectors should be chosen to make styles understandable and easy to maintain.
+
+\begin{lstlisting}[style=webcode,language=CSS]
+/* Element selector */
+p { line-height: 1.6; }
+
+/* Reusable class selector */
+.notice {
+  border-left: 4px solid #007F86;
+  padding: 1rem;
+}
+
+/* Layout for a group of cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+\end{lstlisting}
+
+\section{Cascade, Specificity and Inheritance}
+When more than one CSS rule can apply to an element, the cascade determines which declaration wins. Origin, importance, specificity, and source order affect the result. Inherited properties such as text colour may pass from a parent to its children, while properties such as margin do not normally inherit. Overusing highly specific selectors can make future changes difficult.
+
+\section{Responsive Design}
+Responsive design helps a layout adapt to different screen sizes. Flexible widths, relative units, CSS Grid, Flexbox, and media queries can be combined to create interfaces that work on phones, tablets, laptops, and larger screens. A responsive page should not merely shrink; content must remain readable and controls must remain usable.
+
+\begin{lstlisting}[style=webcode,language=CSS]
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 700px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+\end{lstlisting}
+
+\section{Flexbox and Grid}
+Flexbox is useful for arranging items along one primary axis, such as a navigation row. Grid is useful when a layout needs rows and columns together, such as a card gallery. Choosing the simpler layout model usually makes the code easier to understand.
+
+\section*{Review Questions}
+\begin{enumerate}
+\item Compare class selectors and ID selectors.
+\item What does CSS specificity help determine?
+\item Explain one practical difference between Flexbox and Grid.
+\item How can a media query improve mobile usability?
+\end{enumerate}
+
+\chapter{JavaScript Variables, Types and Operators}
+\section{Storing Values}
+Variables give names to values used by a program. JavaScript provides \texttt{const} for bindings that should not be reassigned and \texttt{let} for bindings that may change. \texttt{var} is part of the language but has different scoping behaviour and is usually avoided in new beginner examples.
+
+\begin{lstlisting}[style=webcode,language=JavaScript]
+const courseName = "Web Development";
+let completedLessons = 3;
+completedLessons = completedLessons + 1;
+
+const isReady = completedLessons >= 4;
+console.log(courseName, completedLessons, isReady);
+\end{lstlisting}
+
+\section{Common Data Types}
+Strings represent text, numbers represent numeric values, booleans represent true or false, and arrays hold ordered collections. Objects group related properties. The value \texttt{null} can represent an intentional absence of a value, while \texttt{undefined} commonly indicates that a value has not been assigned or is missing.
+
+\section{Operators and Comparisons}
+Arithmetic operators perform calculations. Comparison operators produce Boolean results, and logical operators combine conditions. Strict equality (\texttt{===}) compares values without automatically converting different types, which makes it a good default for most comparisons.
+
+\section{Readable and Safe Code}
+Descriptive variable names, consistent indentation, and small expressions make code easier to review. Validate user-provided data before relying on it. Never treat browser-side validation as the only protection for a system that stores sensitive data; server-side checks are also required when a server is involved.
+
+\section*{Review Questions}
+\begin{enumerate}
+\item Compare \texttt{let} and \texttt{const}.
+\item Name four JavaScript data types and give an example of each.
+\item Why is strict equality often preferred?
+\item Why should important validation not rely only on browser-side code?
+\end{enumerate}
+
+\chapter{Conditions, Loops, Functions and Arrays}
+\section{Conditional Decisions}
+Conditional statements allow a program to choose an action based on a condition. An \texttt{if}/\texttt{else} statement can validate input, choose a message, or control which content is shown. Conditions should be written clearly and tested for both expected and unexpected values.
+
+\begin{lstlisting}[style=webcode,language=JavaScript]
+const score = 76;
+if (score >= 80) {
+  console.log("Excellent");
+} else if (score >= 50) {
+  console.log("Pass");
+} else {
+  console.log("Needs more practice");
+}
+\end{lstlisting}
+
+\section{Loops}
+Loops repeat an operation while a condition is true or for each item in a collection. A loop needs a clear stopping condition; otherwise it may continue indefinitely. For arrays, methods such as \texttt{forEach}, \texttt{map}, and \texttt{filter} can express common operations when used appropriately.
+
+\section{Functions}
+A function groups instructions into a reusable unit. Parameters receive input, and a return value provides a result. Small functions are easier to test than one long block of mixed responsibilities.
+
+\begin{lstlisting}[style=webcode,language=JavaScript]
+function calculateAverage(values) {
+  if (values.length === 0) return 0;
+  const total = values.reduce((sum, value) => sum + value, 0);
+  return total / values.length;
+}
+console.log(calculateAverage([70, 80, 90]));
+\end{lstlisting}
+
+\section{Arrays and Objects}
+Arrays are suitable for ordered lists such as course names. Objects are suitable for related attributes such as a course title, duration, and level. Choosing an appropriate data structure reduces repetition and helps the program represent information clearly.
+
+
+\section{Working with Strings}
+A string is a sequence of text characters. JavaScript provides properties and methods for checking length, changing letter case, finding text, extracting a portion, and joining values. String methods usually return a result rather than changing the original string, so store the returned value when a change is needed.
+
+\begin{lstlisting}[style=webcode,language=JavaScript]
+const learner = "  Siva Sai  ";
+const cleaned = learner.trim();
+const greeting = "Welcome, " + cleaned + "!";
+console.log(greeting);
+console.log(cleaned.toUpperCase());
+\end{lstlisting}
+When processing names or messages, consider empty input and extra spaces. Do not assume that every text value is valid simply because it is a string; validation should match the purpose of the field.
+
+\section*{Review Questions}
+\begin{enumerate}
+\item Explain how an \texttt{if}/\texttt{else} statement makes a decision.
+\item What is the purpose of a loop's stopping condition?
+\item Define function parameters and return values.
+\item Give one example of information that is better represented by an object than by separate variables.
+\end{enumerate}
+
+\chapter{DOM, Events and Form Interaction}
+\section{The Document Object Model}
+The Document Object Model (DOM) represents a page as a tree of objects. JavaScript can select elements, read or update text, change classes, and respond to events. Changes should be made deliberately so that the page remains understandable and accessible.
+
+\begin{lstlisting}[style=webcode,language=JavaScript]
+const button = document.querySelector("#show-message");
+const message = document.querySelector("#message");
+
+button.addEventListener("click", () => {
+  message.textContent = "Your action was received.";
+});
+\end{lstlisting}
+
+\section{Events}
+Events describe interactions such as clicks, keyboard input, form submission, and changes to a field. An event listener connects an event to a function. For forms, listening to the submit event makes it possible to validate data before displaying a result or sending a request.
+
+\section{Validation and Feedback}
+Good validation explains what needs correction. It should preserve user input where possible, identify the field with an issue, and avoid relying on colour alone to communicate errors. A successful action should also provide clear confirmation.
+
+\section{Safe DOM Updates}
+When displaying untrusted text, prefer \texttt{textContent} rather than inserting arbitrary HTML with \texttt{innerHTML}. This reduces the risk of interpreting user input as markup or script. More complex applications need additional security controls appropriate to their data and architecture.
+
+
+\section{Drawing with the HTML Canvas}
+The HTML \texttt{canvas} element provides a drawing surface that JavaScript can control. It is useful for simple charts, sketches, or interactive visual demonstrations. Canvas content is drawn with script and is not automatically exposed as ordinary text to assistive technology; provide a text explanation or an accessible alternative where the drawing conveys important information.
+
+\begin{lstlisting}[style=webcode,language=HTML]
+<canvas id="demo-canvas" width="320" height="140">
+  A simple coloured rectangle illustration.
+</canvas>
+\end{lstlisting}
+
+\begin{lstlisting}[style=webcode,language=JavaScript]
+const canvas = document.querySelector("#demo-canvas");
+const context = canvas.getContext("2d");
+
+context.fillStyle = "#007F86";
+context.fillRect(20, 20, 180, 70);
+context.fillStyle = "#17365D";
+context.font = "16px sans-serif";
+context.fillText("Web Developer", 30, 115);
+\end{lstlisting}
+The canvas dimensions define its drawing surface. CSS can control how large it appears on the page, but changing only its displayed size may scale the drawing. For beginner projects, keep the example small and test it in the browser.
+
+\section{Using JavaScript with Images}
+JavaScript can respond to a button click by changing an image's source, updating alternative text, or adjusting presentation classes. Alternative text should continue to describe the image's purpose after a change. Images should have appropriate dimensions and should not be stretched in ways that distort their content.
+
+\begin{lstlisting}[style=webcode,language=HTML]
+<img id="course-image"
+     src="images/html-basics.jpg"
+     alt="HTML code displayed in an editor">
+<button id="change-image" type="button">
+  Show CSS image
+</button>
+\end{lstlisting}
+
+\begin{lstlisting}[style=webcode,language=JavaScript]
+const image = document.querySelector("#course-image");
+const changeButton = document.querySelector("#change-image");
+
+changeButton.addEventListener("click", () => {
+  image.src = "images/css-basics.jpg";
+  image.alt = "CSS rules displayed in an editor";
+});
+\end{lstlisting}
+The image paths must point to files that actually exist in the project. If an image cannot load, provide a useful fallback or ensure that the page still communicates its essential information.
+
+\section*{Review Questions}
+\begin{enumerate}
+\item What does the DOM represent?
+\item Describe how an event listener works.
+\item Give two characteristics of helpful form validation.
+\item Why is \texttt{textContent} a safer default for displaying plain user input?
+\end{enumerate}
+
+\chapter{Testing, Debugging and Quality Assurance}
+
+\begin{center}
+\IfFileExists{images/programmer-work.jpg}{
+  \includegraphics[width=.78\textwidth,height=42mm,keepaspectratio]{images/programmer-work.jpg}
+}{
+  \fbox{\parbox{.72\textwidth}{\centering Figure 12.1. Careful development and review are part of building reliable websites. Photo: Free-Photos / Pixabay, CC0 1.0.}}
+}
+\end{center}
+\textit{Figure 12.1. Careful development and review are part of building reliable websites. Photo: Free-Photos / Pixabay, CC0 1.0.}
+\section{Why Testing Matters}
+Testing checks whether a website behaves as expected and helps detect defects before release. Testing should cover more than whether a page appears on one developer's computer. Different screen sizes, keyboard use, input errors, navigation paths, and browser behaviours can reveal problems that are otherwise missed.
+
+\subsection{Useful Test Categories}
+\begin{itemize}
+\item \textbf{Functional testing:} Confirms links, forms, buttons, and core features behave correctly.
+\item \textbf{Visual testing:} Checks alignment, spacing, contrast, and layout consistency.
+\item \textbf{Responsive testing:} Checks content at narrow and wide viewport sizes.
+\item \textbf{Accessibility testing:} Checks keyboard navigation, labels, headings, and alternative text.
+\item \textbf{Compatibility testing:} Checks behaviour in supported browsers and devices.
+\item \textbf{Regression testing:} Rechecks existing features after a change.
+\end{itemize}
+
+\section{A Practical Debugging Method}
+First reproduce the issue and record the steps. Next inspect the relevant element, console message, network response, or source code. Form a small hypothesis, change one thing at a time, and repeat the test. Once fixed, check nearby features to make sure the correction did not introduce another defect.
+
+\section{Test Case Example}
+\begin{tabularx}{\textwidth}{p{.23\textwidth}X}
+\toprule
+Field & Example\\
+\midrule
+Test objective & Verify required email input.\\
+Starting condition & Contact form is open.\\
+Action & Submit without entering an email address.\\
+Expected result & The form identifies the missing required field and does not report a successful submission.\\
+Observed result & Record what actually happened.\\
+Status & Pass or fail after comparison with the expected result.\\
+\bottomrule
+\end{tabularx}
+
+\section*{Review Questions}
+\begin{enumerate}
+\item Why is responsive testing important?
+\item Distinguish functional testing from regression testing.
+\item List the steps in a systematic debugging process.
+\item What information should a useful test case record?
+\end{enumerate}
+
+\chapter{Accessibility, Performance and Secure Publishing}
+\section{Accessibility Essentials}
+Accessible design helps people with different abilities use a website. Provide clear headings, descriptive links, form labels, sufficient colour contrast, keyboard access, and useful alternative text. Interactive controls should show a visible focus indicator. Automated checks can help, but manual keyboard and content checks remain valuable.
+
+\section{Performance Basics}
+Large images, unnecessary scripts, repeated network requests, and complex layouts can slow a page. Resize images appropriately, use modern image formats where supported, avoid loading resources that are not needed, and keep code organised. Performance should be evaluated with measurements rather than guesses.
+
+\section{Security Awareness}
+Use HTTPS for published sites. Do not place passwords, private API keys, or confidential tokens in public HTML, CSS, JavaScript, or source repositories. Client-side code is visible to visitors. If a feature requires a secret credential, it generally belongs in a protected server-side environment. Keep software dependencies maintained and collect only the information a site actually needs.
+
+\section{Publishing Checklist}
+Before publishing, verify that links work, page titles are meaningful, images have suitable alternative text, forms give clear feedback, layouts work on mobile screens, and no test credentials or private data remain in the repository. Confirm the correct files are deployed and keep a copy of the source so that later updates can be made safely.
+
+\section*{Review Questions}
+\begin{enumerate}
+\item List five practices that improve accessibility.
+\item Name three common causes of slow web pages.
+\item Why should secret API keys not be stored in browser-side JavaScript?
+\item Create a short checklist for publishing a small informational website.
+\end{enumerate}
+
+\chapter{Integrated Mini Project: Learning Centre Website}
+\section{Project Brief}
+Create a small informational website for a learning centre. The website should display the centre name, a list of courses, basic contact information, and a contact form interface. The project demonstrates the combined roles of HTML for structure, CSS for presentation, and JavaScript for interaction.
+
+\section{Suggested Page Structure}
+\begin{itemize}
+\item Header containing the site name and primary navigation.
+\item Main section describing the centre and its courses.
+\item Course cards with titles, brief descriptions, and duration.
+\item Contact section with labelled form fields.
+\item Footer containing non-sensitive contact and copyright information.
+\end{itemize}
+
+\section{Implementation Plan}
+Begin by creating semantic HTML. Add CSS rules for typography, colour, spacing, and a responsive card layout. Add JavaScript only where it improves the user experience, such as providing a clear message after a valid client-side form submission. If the project is later connected to a real service, server-side validation and secure handling of submitted information will be required.
+
+\section{Evaluation Rubric}
+\begin{tabularx}{\textwidth}{p{.52\textwidth}r}
+\toprule
+Criterion & Marks\\
+\midrule
+Semantic structure and meaningful headings & 20\\
+Readable and consistent visual design & 20\\
+Responsive layout & 20\\
+Working interaction and useful feedback & 15\\
+Accessibility checks & 15\\
+Code organisation and testing notes & 10\\
+\midrule
+Total & 100\\
+\bottomrule
+\end{tabularx}
+
+\section*{Review Questions}
+\begin{enumerate}
+\item Identify the HTML, CSS, and JavaScript responsibilities in the project.
+\item Describe how you would test the site on a narrow mobile screen.
+\item What security changes would be required before collecting real contact details?
+\item Suggest two improvements that could be included in a future version.
+\end{enumerate}
+
+\end{document}
